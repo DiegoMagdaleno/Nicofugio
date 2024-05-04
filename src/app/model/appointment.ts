@@ -4,7 +4,6 @@ export interface Appointment {
     email: string;
     phone: string;
     date: string;
-    time: string;
     notes: string;
     petId: number;
 }

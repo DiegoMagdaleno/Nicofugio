@@ -9,6 +9,9 @@ export class AppointmentsService {
   constructor() { }
 
   getAppointments(): Appointment[] {
+    if (!localStorage.getItem('appointments')) {
+      localStorage.setItem('appointments', '[]');
+    }
     return JSON.parse(localStorage.getItem('appointments') || '[]');
   }
 

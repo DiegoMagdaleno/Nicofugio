@@ -1,0 +1,59 @@
+<form class="tw-flex-col" [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+    <h1 class="tw-text-2xl tw-font-bold tw-mb-4">Formulario de adopción</h1>
+    <div>
+        <h3 class="tw-text-lg tw-font-bold tw-mb-2">Datos personales</h3>
+        <div class="tw-flex tw-gap-4">
+            <mat-form-field>
+                <mat-label>Nombre y Apellido</mat-label>
+                <input matInput placeholder="Nombre y apellido" formControlName="name">
+                @if (appointmentForm.get('name')?.hasError('required')) {
+                <mat-error>El nombre es obligatorio</mat-error>
+                }
+                @if (appointmentForm.get('name')?.hasError('minlength')) {
+                <mat-error>El nombre debe contener al menos 3 caracteres</mat-error>
+                }
+                @if (appointmentForm.get('name')?.hasError('noSpace')) {
+                <mat-error>El nombre debe contener al menos un espacio</mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput type="email" placeholder="Email" formControlName="email">
+                @if (appointmentForm.get('email')?.hasError('required')) {
+                <mat-error>El email es obligatorio</mat-error>
+                }
+                @if (appointmentForm.get('email')?.hasError('email')) {
+                <mat-error>El email no es válido</mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Teléfono</mat-label>
+                <input matInput type="tel" placeholder="Teléfono" formControlName="phone">
+                @if (appointmentForm.get('phone')?.hasError('required')) {
+                <mat-error>El teléfono es obligatorio</mat-error>
+                }
+                @if (appointmentForm.get('phone')?.hasError('pattern')) {
+                <mat-error>El teléfono no es válido</mat-error>
+                }
+            </mat-form-field>
+
+        </div>
+    </div>
+    <mat-form-field>
+        <mat-label>Elige una fecha</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date" [matDatepickerFilter]="filterIt">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Notas</mat-label>
+        <textarea matInput placeholder="Soy una persona cariñosa con los animalitos..."
+            formControlName="notes"></textarea>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Enviar</button>
+</form>
