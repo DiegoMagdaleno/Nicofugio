@@ -2,12 +2,25 @@ import { Component } from '@angular/core';
 import { MatFormField } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { provideNativeDateAdapter } from '@angular/material/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, FormControl, ValidationErrors} from '@angular/forms';
+import {
+  MatNativeDateModule,
+  provideNativeDateAdapter,
+} from '@angular/material/core';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+  FormControl,
+  ValidationErrors,
+} from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { AppointmentsService } from '../../serv/appointments.service';
 import { Appointment } from '../../model/appointment';
-
+import {
+  MatNativeDateTimeModule,
+  MatTimepickerModule,
+} from '@dhutaryan/ngx-mat-timepicker';
 
 @Component({
   selector: 'app-appointment',
@@ -18,6 +31,8 @@ import { Appointment } from '../../model/appointment';
     MatInputModule,
     MatDatepickerModule,
     ReactiveFormsModule,
+    MatTimepickerModule,
+    MatNativeDateTimeModule,
   ],
   templateUrl: './appointment.component.html',
   styleUrl: './appointment.component.css',
@@ -25,6 +40,8 @@ import { Appointment } from '../../model/appointment';
 export class AppointmentComponent {
   appointmentForm!: FormGroup;
   appointments: Appointment[] = [];
+  minDate: Date = new Date();
+  maxDate: Date = new Date(new Date().setMonth(new Date().getMonth() + 1));
   constructor(
     private formBuilder: FormBuilder,
     private datePipe: DatePipe,
@@ -34,10 +51,18 @@ export class AppointmentComponent {
   ngOnInit(): void {
     this.appointmentForm = this.formBuilder.group({
       date: ['', Validators.required],
-      name: ['', [Validators.required, this.containsSpaceSeparator, Validators.minLength(3)]],
+      name: [
+        '',
+        [
+          Validators.required,
+          this.containsSpaceSeparator,
+          Validators.minLength(3),
+        ],
+      ],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       notes: '',
+      time: new FormControl({value: '', disabled: true}, [Validators.required, this.canBeScheduled])
     });
 
     this.appointments = this.appointmentService.getAppointments();
@@ -62,10 +87,43 @@ export class AppointmentComponent {
     return null;
   }
 
-  filterIt = (d: Date | null): boolean => {
-    if (!d) return false;
-    const dateString = this.datePipe.transform(d, 'dd/MM/yyyy');
-    if (!dateString) return false;
-    return !this.appointmentService.getAppointmentsAt(dateString).length;
+  canBeScheduled = (formControl: FormControl): ValidationErrors | null => {
+    if (!formControl.value) return null;
+    const time = formControl.value;
+    const dateTime = new Date(time); 
+    if (!dateTime) return null;
+    const hours = dateTime.getHours();
+    const minutes = dateTime.getMinutes();
+    const date = formControl.parent?.get('date')?.value;
+    if (!date) return null;
+    const dateString = this.datePipe.transform(date, 'dd/MM/yyyy');
+    if (!dateString) return null;
+    const appointments = this.appointmentService.getAppointmentsAt(dateString);
+    if (!appointments.length) return null;
+    const roundedMinutes = Math.ceil(minutes / 15) * 15;
+    let roundedHours = hours;
+    if (roundedMinutes === 60) {
+      roundedHours += 1;
+    }
+    const roundedTime = new Date();
+    roundedTime.setHours(roundedHours);
+    roundedTime.setMinutes(roundedMinutes);
+    const roundedTimeString = this.datePipe.transform(roundedTime, 'HH:mm');
+    if (!roundedTimeString) return null;
+    const appointment = appointments.find(a => a.time === roundedTimeString);
+    if (appointment) {
+      return { invalidTime: true };
+    } 
+    return null;
+  }
+
+  onDateChange() {
+    const dateControl = this.appointmentForm.get('date');
+    const timeControl = this.appointmentForm.get('time');
+    if (dateControl && dateControl.value) {
+      timeControl?.enable();
+    } else {
+      timeControl?.disable();
+    }
   }
 }

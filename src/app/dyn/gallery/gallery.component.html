@@ -1,1 +1,6 @@
-<p>gallery works!</p>
+@for (pet of pets; track $index) {
+    <div>
+        <p>{{ pet.name }}</p>
+        <a [routerLink]="['/pet-details', pet.id]" routerLinkActive="active">Ver detalles</a>
+    </div>
+}

@@ -1,0 +1,37 @@
+<div class="tw-flex tw-h-screen tw-w-screen tw-p-5">
+    <div class="tw-space-y-5">
+        <div class="tw-flex">
+            <img src="{{ pet.imageUrl }}" alt="{{ pet.name }}" class="tw-w-96 tw-h-96 tw-object-cover">
+        </div>
+        <div>
+            <h1 class="tw-text-3xl tw-font-bold">Detalles de la mascota</h1>
+            <p class="tw-text-lg"> <span class="tw-font-semibold">Nombre: </span> {{ pet.name }}</p>
+            <p class="tw-text-lg"> <span class="tw-font-semibold">Breed: </span> {{ pet.breed }}</p>
+            <p class="tw-text-lg"> <span class="tw-font-semibold">Descripcion: </span> {{ pet.description }}</p>
+
+            <table class="tw-w-full tw-mt-5">
+                <thead>
+                    <tr>
+                        <th class="tw-text-lg tw-font-semibold">Edad</th>
+                        <th class="tw-text-lg tw-font-semibold">Peso</th>
+                        <th class="tw-text-lg tw-font-semibold">Genero</th>
+                        <th class="tw-text-lg tw-font-semibold">Longitud</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="tw-text-lg tw-font-semibold">{{ pet.age }}</td>
+                        <td class="tw-text-lg tw-font-semibold">{{ pet.weight }}</td>
+                        <td class="tw-text-lg tw-font-semibold">m</td>
+                        <td class="tw-text-lg tw-font-semibold">{{ pet.length }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div>
+        <h1 class="tw-text-3xl">¿Interesado?</h1>
+        <p class="tw-text-lg">Llena el formulario y nos pondremos en contacto contigo</p>
+        <app-appointment></app-appointment>
+    </div>
+</div>

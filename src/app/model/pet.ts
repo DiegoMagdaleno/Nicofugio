@@ -6,4 +6,6 @@ export interface Pet {
     age: number;
     description: string;
     imageUrl: string;
+    weight: number;
+    length: number;
 }
