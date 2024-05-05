@@ -3,11 +3,12 @@ import { Component } from '@angular/core';
 import { AppointmentsService } from '../../serv/appointments.service';
 import { Appointment } from '../../model/appointment';
 import { NavbarComponent } from '../../comp/navbar/navbar.component';
+import { FooterComponent } from '../../comp/footer/footer.component';
 
 @Component({
   selector: 'app-appointments',
   standalone: true,
-  imports: [CommonModule, NavbarComponent],
+  imports: [CommonModule, NavbarComponent, FooterComponent],
   templateUrl: './appointments.component.html',
   styleUrl: './appointments.component.scss'
 })
