@@ -11,11 +11,23 @@ import { Appointment } from '../../model/appointment';
   styleUrl: './appointments.component.css'
 })
 export class AppointmentsComponent {
-  appointments: Appointment[] = [];
+  previousAppointments: Appointment[] = [];
+  upcomingAppointments: Appointment[] = [];
 
   constructor(private appointmentsService: AppointmentsService) {}
 
   ngOnInit(): void {
-    this.appointments = this.appointmentsService.getAppointments();
+    const appointments = this.appointmentsService.getAppointments();
+
+    const currentDate = new Date();
+    this.previousAppointments = appointments.filter(appointment => {
+      const appointmentDateTime = new Date(`${appointment.date} ${appointment.time}`);
+      return appointmentDateTime < currentDate;
+    });    
+
+    this.upcomingAppointments = appointments.filter(appointment => {
+      const appointmentDateTime = new Date(`${appointment.date} ${appointment.time}`);
+      return appointmentDateTime >= currentDate;
+    });
   }
 }
