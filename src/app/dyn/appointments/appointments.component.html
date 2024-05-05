@@ -15,11 +15,35 @@
                 </tr>
             </thead>
             <tbody>
-                @for (appointment of appointments; track $index) {
+                @for (appointment of previousAppointments; track $index) {
                     <tr>
                         <td class="tw-text-lg">{{ appointment.name }}</td>
                         <td class="tw-text-lg">{{ appointment.date }} </td>
                         <td class="tw-text-lg tw-font-semibold">00:00</td>
+                        <td class="tw-text-lg tw-font-semibold">{{ appointment.petId }}</td>
+                        <td class="tw-text-lg tw-font-semibold">Acciones</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <h3>Citas futuras</h3>
+        <table class="tw-w-full tw-mt-5">
+            <thead>
+                <tr>
+                    <th class="tw-text-lg tw-font-semibold">Nombre</th>
+                    <th class="tw-text-lg tw-font-semibold">Fecha</th>
+                    <th class="tw-text-lg tw-font-semibold">Hora</th>
+                    <th class="tw-text-lg tw-font-semibold">Mascota</th>
+                    <th class="tw-text-lg tw-font-semibold">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (appointment of upcomingAppointments; track $index) {
+                    <tr>
+                        <td class="tw-text-lg">{{ appointment.name }}</td>
+                        <td class="tw-text-lg">{{ appointment.date }} </td>
+                        <td class="tw-text-lg tw-font-semibold">{{ appointment.time }}</td>
                         <td class="tw-text-lg tw-font-semibold">{{ appointment.petId }}</td>
                         <td class="tw-text-lg tw-font-semibold">Acciones</td>
                     </tr>
