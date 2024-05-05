@@ -67,7 +67,10 @@ export class AppointmentComponent {
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       notes: '',
-      time: new FormControl({value: '', disabled: true}, [Validators.required, this.canBeScheduled])
+      time: new FormControl({ value: '', disabled: true }, [
+        Validators.required,
+        this.canBeScheduled,
+      ]),
     });
 
     this.appointments = this.appointmentService.getAppointments();
@@ -78,7 +81,12 @@ export class AppointmentComponent {
       this.appointmentForm.value.date,
       'dd/MM/yyyy'
     );
+    const formatedTime = this.datePipe.transform(
+      this.appointmentForm.value.time,
+      'HH:mm'
+    );
     this.appointmentForm.value.date = formatedDate;
+    this.appointmentForm.value.time = formatedTime;
     this.appointmentService.addAppointment(
       this.appointmentForm.value as Appointment
     );
@@ -87,7 +95,7 @@ export class AppointmentComponent {
       this.appointmentForm.get(key)?.setErrors(null);
     });
     this.router.navigate(['/gallery']);
-    this.toaster.success("Cita agendada con éxito", "¡Éxito!");
+    this.toaster.success('Cita agendada con éxito', '¡Éxito!');
   }
 
   containsSpaceSeparator(control: FormControl): ValidationErrors | null {
@@ -100,7 +108,7 @@ export class AppointmentComponent {
   canBeScheduled = (formControl: FormControl): ValidationErrors | null => {
     if (!formControl.value) return null;
     const time = formControl.value;
-    const dateTime = new Date(time); 
+    const dateTime = new Date(time);
     if (!dateTime) return null;
     const hours = dateTime.getHours();
     const minutes = dateTime.getMinutes();
@@ -120,12 +128,12 @@ export class AppointmentComponent {
     roundedTime.setMinutes(roundedMinutes);
     const roundedTimeString = this.datePipe.transform(roundedTime, 'HH:mm');
     if (!roundedTimeString) return null;
-    const appointment = appointments.find(a => a.time === roundedTimeString);
+    const appointment = appointments.find((a) => a.time === roundedTimeString);
     if (appointment) {
       return { invalidTime: true };
-    } 
+    }
     return null;
-  }
+  };
 
   onDateChange() {
     const dateControl = this.appointmentForm.get('date');

@@ -1,0 +1,29 @@
+.left-content {
+  float: left;
+  width: 50%;
+}
+
+.right-content {
+  float: right;
+  width: 50%;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+/* Imagen encima de otra */
+#wrapper {
+  position: relative;
+}
+
+#wrapper > div {
+  width: 200px;
+  height: 200px;
+}
+
+#div2 {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+}

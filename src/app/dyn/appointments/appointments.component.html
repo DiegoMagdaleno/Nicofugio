@@ -1,55 +1,62 @@
 <app-navbar></app-navbar>
-<div class="tw-flex tw-h-screen tw-w-screen tw-p-5 tw-flex-col">
-    <div class="tw-flex tw-items-center tw-justify-center tw-w-full tw-text-center">
-        <h1 class="tw-text-5xl tw-font-bold">Citas realizadas</h1>
+<div class="container-fluid py-5">
+    <div class="row mb-4">
+        <div class="col text-center">
+            <h1 class="display-4 font-weight-bold">Citas realizadas</h1>
+        </div>
     </div>
-    <div>
-        <h3>Citas previas</h3>
-        <table class="tw-w-full tw-mt-5">
-            <thead>
-                <tr>
-                    <th class="tw-text-lg tw-font-semibold">Nombre</th>
-                    <th class="tw-text-lg tw-font-semibold">Fecha</th>
-                    <th class="tw-text-lg tw-font-semibold">Hora</th>
-                    <th class="tw-text-lg tw-font-semibold">Mascota</th>
-                    <th class="tw-text-lg tw-font-semibold">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (appointment of previousAppointments; track $index) {
-                    <tr>
-                        <td class="tw-text-lg">{{ appointment.name }}</td>
-                        <td class="tw-text-lg">{{ appointment.date }} </td>
-                        <td class="tw-text-lg tw-font-semibold">{{ appointment.time }} </td>
-                        <td class="tw-text-lg tw-font-semibold">{{ appointment.petId }}</td>
-                        <td class="tw-text-lg tw-font-semibold">Acciones</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-
-        <h3>Citas futuras</h3>
-        <table class="tw-w-full tw-mt-5">
-            <thead>
-                <tr>
-                    <th class="tw-text-lg tw-font-semibold">Nombre</th>
-                    <th class="tw-text-lg tw-font-semibold">Fecha</th>
-                    <th class="tw-text-lg tw-font-semibold">Hora</th>
-                    <th class="tw-text-lg tw-font-semibold">Mascota</th>
-                    <th class="tw-text-lg tw-font-semibold">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (appointment of upcomingAppointments; track $index) {
-                    <tr>
-                        <td class="tw-text-lg">{{ appointment.name }}</td>
-                        <td class="tw-text-lg">{{ appointment.date }} </td>
-                        <td class="tw-text-lg tw-font-semibold">{{ appointment.time }}</td>
-                        <td class="tw-text-lg tw-font-semibold">{{ appointment.petId }}</td>
-                        <td class="tw-text-lg tw-font-semibold">Acciones</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+    <div class="row">
+        <div class="col">
+            <h3>Citas previas</h3>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover mt-3">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Mascota</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (appointment of previousAppointments; track $index) {
+                        <tr>
+                            <td class="tw-text-lg">{{ appointment.name }}</td>
+                            <td class="tw-text-lg">{{ appointment.date }} </td>
+                            <td class="tw-text-lg tw-font-semibold">{{ appointment.time }} </td>
+                            <td class="tw-text-lg tw-font-semibold">{{ appointment.petId }}</td>
+                            <td class="tw-text-lg tw-font-semibold">Acciones</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <h3>Citas futuras</h3>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover mt-3">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Mascota</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (appointment of upcomingAppointments; track $index) {
+                        <tr>
+                            <td class="tw-text-md">{{ appointment.name }}</td>
+                            <td class="tw-text-md">{{ appointment.date }} </td>
+                            <td class="tw-text-md">{{ appointment.time }}</td>
+                            <td class="tw-text-md">{{ appointment.petId }}</td>
+                            <td class="tw-text-md">Acciones</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
