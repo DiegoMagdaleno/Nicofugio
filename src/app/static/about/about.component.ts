@@ -7,7 +7,7 @@ import { FooterComponent } from '../../comp/footer/footer.component';
   standalone: true,
   imports: [NavbarComponent, FooterComponent],
   templateUrl: './about.component.html',
-  styleUrl: './about.component.css'
+  styleUrl: './about.component.scss'
 })
 export class AboutComponent {
 

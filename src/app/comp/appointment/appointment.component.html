@@ -40,8 +40,9 @@
 
         </div>
     </div>
-    <div>
+    <div class="tw-flex tw-flex-col">
         <h3 class="tw-text-lg tw-font-bold tw-mb-2">Datos de la cita</h3>
+        <div class="tw-flex tw-space-x-4 tw-items-center tw-justify-center">
         <mat-form-field>
             <mat-label>Elige una fecha</mat-label>
             <input matInput [matDatepicker]="picker" formControlName="date" [min]="minDate" [max]="maxDate"
@@ -61,6 +62,7 @@
             <mat-error>La hora no es válida o ya esta reservada en este dia.</mat-error>
             }
         </mat-form-field>
+        </div>
     </div>
 
     <div class="tw-w-full">

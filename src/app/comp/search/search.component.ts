@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './search.component.html',
-  styleUrl: './search.component.css'
+  styleUrl: './search.component.scss'
 })
 export class SearchComponent {
   @Output() search: EventEmitter<string> = new EventEmitter<string>();

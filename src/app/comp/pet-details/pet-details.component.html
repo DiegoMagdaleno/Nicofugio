@@ -1,37 +1,46 @@
-<div class="tw-flex tw-h-screen tw-w-screen tw-p-5">
-    <div class="tw-space-y-5">
-        <div class="tw-flex">
-            <img src="{{ pet.imageUrl }}" alt="{{ pet.name }}" class="tw-w-96 tw-h-96 tw-object-cover">
+<app-navbar></app-navbar>
+<div class="tw-overflow-y-hidden tw-flex tw-flex-col tw-items-center tw-mt-4">
+    <h1 class="tw-text-4xl tw-font-bold tw-text-center tw-mb-4">Detalles de tu nuevo amigo</h1>
+    <h3 class="tw-text-lg tw-font-medium tw-text-center tw-mb-8">Aquí encontrarás toda la información sobre tu nueva mascota</h3>
+    <div class="tw-flex tw-p-5 tw-items-center tw-justify-center tw-gap-8">
+        <div class="tw-space-y-5 tw-items-center tw-flex tw-flex-col">
+            <div class="tw-rounded-full tw-overflow-hidden">
+                <img src="{{ pet.imageUrl }}" alt="{{ pet.name }}" class="tw-w-48 tw-h-48 tw-object-cover">
+            </div>
+            <div class="tw-text-center">
+                <h2 class="tw-text-3xl tw-font-bold">{{ pet.name }}</h2>
+                <p class="tw-text-lg">{{ pet.breed }}</p>
+                <p class="tw-text-lg">{{ pet.description }}</p>
+            </div>
+            <div class="tw-bg-gray-100 tw-rounded-lg tw-p-4">
+                <h2 class="tw-text-2xl tw-font-semibold tw-text-center tw-mb-4">Detalles de la mascota</h2>
+                <div class="tw-grid tw-grid-cols-2 tw-gap-4">
+                    <div>
+                        <p class="tw-text-lg tw-font-semibold">Edad:</p>
+                        <p class="tw-text-lg">{{ pet.age }}</p>
+                    </div>
+                    <div>
+                        <p class="tw-text-lg tw-font-semibold">Peso:</p>
+                        <p class="tw-text-lg">{{ pet.weight }} Kg</p>
+                    </div>
+                    <div>
+                        <p class="tw-text-lg tw-font-semibold">Género:</p>
+                        <p class="tw-text-lg">Macho</p>
+                    </div>
+                    <div>
+                        <p class="tw-text-lg tw-font-semibold">Longitud:</p>
+                        <p class="tw-text-lg">{{ pet.length }} cm</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-            <h1 class="tw-text-3xl tw-font-bold">Detalles de la mascota</h1>
-            <p class="tw-text-lg"> <span class="tw-font-semibold">Nombre: </span> {{ pet.name }}</p>
-            <p class="tw-text-lg"> <span class="tw-font-semibold">Breed: </span> {{ pet.breed }}</p>
-            <p class="tw-text-lg"> <span class="tw-font-semibold">Descripcion: </span> {{ pet.description }}</p>
-
-            <table class="tw-w-full tw-mt-5">
-                <thead>
-                    <tr>
-                        <th class="tw-text-lg tw-font-semibold">Edad</th>
-                        <th class="tw-text-lg tw-font-semibold">Peso</th>
-                        <th class="tw-text-lg tw-font-semibold">Genero</th>
-                        <th class="tw-text-lg tw-font-semibold">Longitud</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="tw-text-lg tw-font-semibold">{{ pet.age }}</td>
-                        <td class="tw-text-lg tw-font-semibold">{{ pet.weight }}</td>
-                        <td class="tw-text-lg tw-font-semibold">m</td>
-                        <td class="tw-text-lg tw-font-semibold">{{ pet.length }}</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="tw-flex tw-flex-col tw-items-center">
+            <div class="tw-bg-white tw-rounded-lg tw-shadow-md tw-p-6 tw-text-center">
+                <h2 class="tw-text-3xl tw-font-extrabold tw-mb-4">¿Interesado?</h2>
+                <p class="tw-text-lg tw-mb-4">Llena el formulario y nos pondremos en contacto contigo</p>
+                <app-appointment [petId]="petId"></app-appointment>
+            </div>
         </div>
-    </div>
-    <div>
-        <h1 class="tw-text-3xl">¿Interesado?</h1>
-        <p class="tw-text-lg">Llena el formulario y nos pondremos en contacto contigo</p>
-        <app-appointment [petId]="petId"></app-appointment>
     </div>
 </div>
+<app-footer></app-footer>

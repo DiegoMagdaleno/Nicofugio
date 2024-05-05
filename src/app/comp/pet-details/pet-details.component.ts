@@ -4,13 +4,15 @@ import { Pet } from '../../model/pet';
 import { PetsService } from '../../serv/pets.service';
 import { AppointmentComponent } from '../appointment/appointment.component';
 import { Input } from '@angular/core';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-pet-details',
   standalone: true,
-  imports: [AppointmentComponent],
+  imports: [AppointmentComponent, NavbarComponent, FooterComponent],
   templateUrl: './pet-details.component.html',
-  styleUrl: './pet-details.component.css'
+  styleUrl: './pet-details.component.scss'
 })
 export class PetDetailsComponent {
   @Input() petId: number = 0;

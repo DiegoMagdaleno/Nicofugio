@@ -16,7 +16,7 @@ import { provideToastr } from 'ngx-toastr';
   providers: [provideNativeDateAdapter(), HttpClient],
   imports: [RouterOutlet, MatFormFieldModule, MatInputModule, MatDatepickerModule, AppointmentComponent, HttpClientModule, HomeComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'Nicofugio';

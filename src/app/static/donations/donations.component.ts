@@ -7,7 +7,7 @@ import { FooterComponent } from '../../comp/footer/footer.component';
   standalone: true,
   imports: [NavbarComponent, FooterComponent],
   templateUrl: './donations.component.html',
-  styleUrl: './donations.component.css'
+  styleUrl: './donations.component.scss'
 })
 export class DonationsComponent {
 

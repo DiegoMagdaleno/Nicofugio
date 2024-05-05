@@ -9,7 +9,7 @@ import { NavbarComponent } from '../../comp/navbar/navbar.component';
   standalone: true,
   imports: [CommonModule, NavbarComponent],
   templateUrl: './appointments.component.html',
-  styleUrl: './appointments.component.css'
+  styleUrl: './appointments.component.scss'
 })
 export class AppointmentsComponent {
   previousAppointments: Appointment[] = [];

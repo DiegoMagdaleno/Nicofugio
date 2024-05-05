@@ -25,6 +25,7 @@ import { Router } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { ToastrService } from 'ngx-toastr';
 import { Input } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-appointment',
@@ -37,9 +38,10 @@ import { Input } from '@angular/core';
     ReactiveFormsModule,
     MatTimepickerModule,
     MatNativeDateTimeModule,
+    MatButtonModule,
   ],
   templateUrl: './appointment.component.html',
-  styleUrl: './appointment.component.css',
+  styleUrl: './appointment.component.scss',
 })
 export class AppointmentComponent {
   appointmentForm!: FormGroup;

@@ -14,7 +14,7 @@ import { NavbarComponent } from '../../comp/navbar/navbar.component';
   standalone: true,
   imports: [HttpClientModule, RouterModule, FormsModule, CommonModule, SearchComponent, NavbarComponent],
   templateUrl: './gallery.component.html',
-  styleUrl: './gallery.component.css',
+  styleUrl: './gallery.component.scss',
   providers: [HttpClient],
 })
 export class GalleryComponent {
