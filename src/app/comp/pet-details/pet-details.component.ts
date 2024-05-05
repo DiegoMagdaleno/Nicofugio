@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Pet } from '../../model/pet';
 import { PetsService } from '../../serv/pets.service';
 import { AppointmentComponent } from '../appointment/appointment.component';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-pet-details',
@@ -12,6 +13,7 @@ import { AppointmentComponent } from '../appointment/appointment.component';
   styleUrl: './pet-details.component.css'
 })
 export class PetDetailsComponent {
+  @Input() petId: number = 0;
   pet: Pet = {
     id: 0,
     name: '',
@@ -30,6 +32,7 @@ export class PetDetailsComponent {
     this.route.params.subscribe(params => {
       this.petsService.getPet(+params['id']).subscribe(pet => {
         this.pet = pet;
+        this.petId = pet.id;
       });
     });
   }

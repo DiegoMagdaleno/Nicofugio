@@ -20,8 +20,6 @@ export class AppointmentsComponent {
   ngOnInit(): void {
     const appointments = this.appointmentsService.getAppointments();
 
-    console.log(appointments);
-
     const currentDate = new Date();
     this.previousAppointments = appointments.filter(appointment => {
       const appointmentDateTime = new Date(`${appointment.date} ${appointment.time}`);

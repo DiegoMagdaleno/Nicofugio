@@ -24,6 +24,7 @@ import {
 import { Router } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { ToastrService } from 'ngx-toastr';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-appointment',
@@ -45,6 +46,8 @@ export class AppointmentComponent {
   appointments: Appointment[] = [];
   minDate: Date = new Date();
   maxDate: Date = new Date(new Date().setMonth(new Date().getMonth() + 1));
+  @Input() petId: number = 0;
+
   constructor(
     private formBuilder: FormBuilder,
     private datePipe: DatePipe,
@@ -87,8 +90,12 @@ export class AppointmentComponent {
     );
     this.appointmentForm.value.date = formatedDate;
     this.appointmentForm.value.time = formatedTime;
+    const appointmentDetails = {
+      ...this.appointmentForm.value,
+      petId: this.petId,
+    }
     this.appointmentService.addAppointment(
-      this.appointmentForm.value as Appointment
+      appointmentDetails as Appointment
     );
     this.appointmentForm.reset();
     Object.keys(this.appointmentForm.controls).forEach((key) => {
@@ -116,7 +123,9 @@ export class AppointmentComponent {
     if (!date) return null;
     const dateString = this.datePipe.transform(date, 'dd/MM/yyyy');
     if (!dateString) return null;
-    const appointments = this.appointmentService.getAppointmentsAt(dateString);
+    const appointments = this.appointmentService.getAppointmentsForPet(this.petId).filter(
+      (a) => a.date === dateString
+    );
     if (!appointments.length) return null;
     const roundedMinutes = Math.ceil(minutes / 15) * 15;
     let roundedHours = hours;
