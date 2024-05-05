@@ -21,6 +21,9 @@ import {
   MatNativeDateTimeModule,
   MatTimepickerModule,
 } from '@dhutaryan/ngx-mat-timepicker';
+import { Router } from '@angular/router';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-appointment',
@@ -45,7 +48,9 @@ export class AppointmentComponent {
   constructor(
     private formBuilder: FormBuilder,
     private datePipe: DatePipe,
-    private appointmentService: AppointmentsService
+    private appointmentService: AppointmentsService,
+    private router: Router,
+    private toaster: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -78,6 +83,11 @@ export class AppointmentComponent {
       this.appointmentForm.value as Appointment
     );
     this.appointmentForm.reset();
+    Object.keys(this.appointmentForm.controls).forEach((key) => {
+      this.appointmentForm.get(key)?.setErrors(null);
+    });
+    this.router.navigate(['/gallery']);
+    this.toaster.success("Cita agendada con éxito", "¡Éxito!");
   }
 
   containsSpaceSeparator(control: FormControl): ValidationErrors | null {
@@ -125,5 +135,9 @@ export class AppointmentComponent {
     } else {
       timeControl?.disable();
     }
+  }
+
+  onCancel(): void {
+    this.router.navigate(['/gallery']);
   }
 }
