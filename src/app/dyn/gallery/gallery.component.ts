@@ -8,11 +8,12 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SearchComponent } from '../../comp/search/search.component';
 import { NavbarComponent } from '../../comp/navbar/navbar.component';
+import { FooterComponent } from '../../comp/footer/footer.component';
 
 @Component({
   selector: 'app-gallery',
   standalone: true,
-  imports: [HttpClientModule, RouterModule, FormsModule, CommonModule, SearchComponent, NavbarComponent],
+  imports: [HttpClientModule, RouterModule, FormsModule, CommonModule, SearchComponent, NavbarComponent, FooterComponent],
   templateUrl: './gallery.component.html',
   styleUrl: './gallery.component.scss',
   providers: [HttpClient],

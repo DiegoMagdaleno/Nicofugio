@@ -1,3 +1,15 @@
-<div>
-  <input class="tw-bg-slate-200 tw-rounded-md tw-shadow-md tw-text-2xl tw-p-4 tw-mb-4" type="text" [(ngModel)]="searchText" placeholder="Buscar..." (input)="onSearch()">
+<div class="tw-flex tw-items-center tw-justify-center">
+  <div class="tw-relative">
+
+    <div class="tw-absolute tw-inset-y-0 tw-start-0 tw-flex tw-items-center tw-ps-3 tw-pointer-events-none">
+      <svg class="tw-w-4 tw-h-4 tw-text-gray-500 tw-dark:text-gray-400" aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+      </svg>
+    </div>
+    <input
+      class="tw-block tw-w-full tw-p-4 tw-ps-10 tw-text-sm tw-text-gray-900 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-50 tw-focus:ring-blue-500 tw-focus:border-blue-500 tw-dark:bg-gray-700 tw-dark:border-gray-600 tw-dark:placeholder-gray-400 tw-dark:text-white tw-dark:focus:ring-blue-500 tw-dark:focus:border-blue-500"
+      type="text" [(ngModel)]="searchText" placeholder="Buscar..." (input)="onSearch()">
+  </div>
 </div>
