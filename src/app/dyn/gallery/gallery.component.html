@@ -9,8 +9,19 @@
 
 <app-search (search)="searchTerm = $event"></app-search>
 
-<div *ngFor="let pet of pets; trackBy: trackById"
+<div class="ajuste row row-cols-1 row-cols-sm-3 row-cols-md-4 row-cols-lg-5  g-3">
+<div class="col" *ngFor="let pet of pets; trackBy: trackById"
   [ngStyle]="{'display': (selectedType === 'all' || pet.species === selectedType) && (searchTerm === '' || pet.name.toLowerCase().includes(searchTerm.toLowerCase())) ? 'block' : 'none'}">
-  <p>{{ pet.name }}</p>
-  <a [routerLink]="['/pet-details', pet.id]" routerLinkActive="active">Ver detalles</a>
+
+    <div class=" ajuste2 card">
+      <img src="{{pet.imageUrl}}" class="card-img-top" alt="{{pet.name}}">
+      <div class="card-body">
+        <h5 class="card-title">{{pet.name}}</h5>
+        <p class="card-text">{{pet.description}}</p>
+        <p class="card-text"><small class="text-muted">Edad: {{pet.age}} años</small></p>
+        <a [routerLink]="['/pet-details', pet.id]" routerLinkActive="active">Ver detalles</a>
+      </div>
+    </div>
+
+  </div>
 </div>
