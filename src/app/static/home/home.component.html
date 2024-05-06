@@ -1,24 +1,20 @@
 <app-navbar></app-navbar>
-<div class="container" style="height: 300px;">
-    <div class="row">
-        <div class="col left-content text-center">
-            <br><br><br>
-            <h1 class="font-weight-bold tw-text-4xl">Encuentra tu <span
-                    class="tw-text-blue-500 font-weight-bold">nuevo<br></span>mejor amigo.</h1>
-            <button class="btn btn-warning btn-lg rounded m-4 font-weight-bold text-white tw-bg-blue-500">¡Ver
-                Mascotas!</button>
-        </div>
-        <div class="col right-content">
-            <div id="wrapper">
-                <div id="div1">
-                    <img src="" width="400" height="200" class="rounded border" alt="Not Image Found">
-                </div>
-                <div id="div2">
-                    <img src="" width="400" height="200" class="rounded border" alt="Not Image Found">
-                </div>
+<div class="container tw-p-8 tw-mb-4 tw-flex tw-h-1/2 tw-justify-center tw-items-center">
+        <div class="left-content tw-flex tw-items-center tw-justify-center tw-flex-col">
+            <img src="assets/Logo.png" alt="Mascotas" class="img-fluid tw-w-1/4 tw-m-2">
+            <h1 class="font-weight-bold tw-text-4xl tw-m-4">Encuentra tu <span
+                    class="tw-text-blue-500 font-weight-bold">nuevo</span> mejor amigo.</h1>
+            <div class="tw-flex tw-w-full tw-m-0 tw-space-x-4">
+                <button class="btn btn-warning btn-lg tw-w-1/2 rounded font-weight-bold text-white tw-bg-blue-500 tw-border-blue-700"
+                    (click)="goToPets()">¡Ver
+                    Mascotas!</button>
+                <button (click)="openVideo()" class="btn btn-warning btn-lg tw-w-1/2 rounded font-weight-bold text-white tw-border-slate-500 tw-bg-slate-200 tw-text-blue-500"
+                    >¿Que es un refugio?</button>
             </div>
         </div>
-    </div>
+        <div class="right-content">
+            <img src="assets/MainImage.png" alt="Adopta">
+        </div>
 </div>
 <div class="container-fluid tw-bg-blue-500 tw-p-4">
     <div class="container">
@@ -85,7 +81,9 @@
     <img src="assets/money.png" alt="Adopta" class="tw-w-1/4 tw-mb-6">
     <h2 class="tw-text-3xl tw-font-bold tw-mb-4">¿No puedes adoptar?</h2>
     <p class="tw-text-lg tw-mb-6">¡Ayuda al refugio con una donación monetaria!</p>
-    <button class="tw-bg-blue-500 tw-hover:bg-blue-600 text-white tw-font-medium tw-py-2 tw-px-6 tw-rounded-md tw-text-xl">¡Apoya al refugio!</button>
+    <button
+        class="tw-bg-blue-500 tw-hover:bg-blue-600 text-white tw-font-medium tw-py-2 tw-px-6 tw-rounded-md tw-text-xl">¡Apoya
+        al refugio!</button>
 </div>
 
 <br>
