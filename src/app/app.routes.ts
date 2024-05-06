@@ -5,6 +5,7 @@ import { AppointmentsComponent } from './dyn/appointments/appointments.component
 import { HomeComponent } from './static/home/home.component';
 import { AboutComponent } from './static/about/about.component';
 import { DonationsComponent } from './static/donations/donations.component';
+import { ContactComponent } from './static/contact/contact.component';
 
 export const routes: Routes = [
   {
@@ -30,5 +31,9 @@ export const routes: Routes = [
   {
     path: 'donations',
     component: DonationsComponent,
+  },
+  {
+    path: 'contact',
+    component: ContactComponent,
   }
 ];
