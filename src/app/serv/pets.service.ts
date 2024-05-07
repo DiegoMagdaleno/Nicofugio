@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class PetsService {
   private apiUrl =
-    'https://gist.githubusercontent.com/DiegoMagdaleno/d1293fe76c253c22479c0c9f23132327/raw/9edf417e17e39dcec75ed609aa4ac53cfe0236bb/pets.json';
+    'https://gist.githubusercontent.com/DiegoMagdaleno/d1293fe76c253c22479c0c9f23132327/raw/ede111e5de0f7a4bb35895077bc49e1841b3ee2a/pets.json';
   constructor(private http: HttpClient) {}
 
   getPets(): Observable<Pet[]> {
