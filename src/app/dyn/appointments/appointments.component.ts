@@ -54,6 +54,9 @@ export class AppointmentsComponent {
       return appointmentDateTime < currentDate;
     });
 
+
+    console.log(this.previousAppointments);
+
     this.upcomingAppointments = appointments.filter((appointment) => {
       const appointmentDateTime = new Date(
         `${appointment.date} ${appointment.time}`
