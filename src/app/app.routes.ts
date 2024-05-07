@@ -7,6 +7,7 @@ import { AboutComponent } from './static/about/about.component';
 import { DonationsComponent } from './static/donations/donations.component';
 import { ContactComponent } from './static/contact/contact.component';
 
+
 export const routes: Routes = [
   {
     path: '',
@@ -33,7 +34,10 @@ export const routes: Routes = [
     component: DonationsComponent,
   },
   {
+
+  
     path: 'contact',
     component: ContactComponent,
+
   }
 ];
