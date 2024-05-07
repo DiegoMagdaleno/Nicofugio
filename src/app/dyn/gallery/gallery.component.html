@@ -1,19 +1,21 @@
 <app-navbar></app-navbar>
-<!-- Texto -->
-<div class="container mt-4 tw-flex tw-flex-col tw-items-center">
+
+<div class="mt-3 p-1 tw-bg-blue-500 text-white tw-flex tw-flex-col tw-align-middle tw-justify-center tw-items-center">
+  <br>
   <img src="assets/love.png" alt="Mascotas" class="img-fluid tw-w-1/4">
+  <br>
   <div class="text-center">
     <h1 class="tw-text-4xl">Toda mascota merece un lugar cálido<br>y amoroso.<br><span
-        class="tw-text-blue-500">Adopta</span> un amigo hoy.</h1>
+        >Adopta</span> un amigo hoy.</h1>
   </div>
 </div>
+<br>
 
 <div class="tw-flex tw-flex-col">
   
   <div class="tw-w-full tw-flex tw-justify-center tw-items-center">
   <app-search (search)="searchTerm = $event"></app-search>
   </div>
-
   <div class="ajuste row row-cols-1 row-cols-sm-3 row-cols-md-4 row-cols-lg-5  g-3">
     <div class="col" *ngFor="let pet of pets; trackBy: trackById"
       [ngStyle]="{'display': (selectedType === 'all' || pet.species === selectedType) && (searchTerm === '' || pet.name.toLowerCase().includes(searchTerm.toLowerCase())) ? 'block' : 'none'}">
