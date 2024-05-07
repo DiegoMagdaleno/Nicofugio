@@ -51,20 +51,33 @@ export class AppointmentsComponent {
     const currentDate = new Date();
     this.previousAppointments = appointments.filter((appointment) => {
       console.log(appointment.date);
+      const [day, month, year] = appointment.date.split('/').map(Number);
+      const [hours, minutes] = appointment.time.split(':').map(Number);
       const appointmentDateTime = new Date(
-        `${appointment.date} ${appointment.time}`
-      );
+        year,
+        month - 1,
+        day,
+        hours,
+        minutes
+      ); // month is 0-indexed in JavaScript
       console.log(appointmentDateTime);
       return appointmentDateTime < currentDate;
     });
 
-
     console.log(this.previousAppointments);
 
     this.upcomingAppointments = appointments.filter((appointment) => {
+      console.log(appointment.date);
+      const [day, month, year] = appointment.date.split('/').map(Number);
+      const [hours, minutes] = appointment.time.split(':').map(Number);
       const appointmentDateTime = new Date(
-        `${appointment.date} ${appointment.time}`
-      );
+        year,
+        month - 1,
+        day,
+        hours,
+        minutes
+      ); // month is 0-indexed in JavaScript
+      console.log(appointmentDateTime);
       return appointmentDateTime >= currentDate;
     });
 
