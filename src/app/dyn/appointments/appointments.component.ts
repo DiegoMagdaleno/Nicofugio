@@ -46,11 +46,15 @@ export class AppointmentsComponent {
   ngOnInit(): void {
     const appointments = this.appointmentsService.getAppointments();
 
+    console.log(appointments);
+
     const currentDate = new Date();
     this.previousAppointments = appointments.filter((appointment) => {
+      console.log(appointment.date);
       const appointmentDateTime = new Date(
         `${appointment.date} ${appointment.time}`
       );
+      console.log(appointmentDateTime);
       return appointmentDateTime < currentDate;
     });
 
@@ -63,6 +67,8 @@ export class AppointmentsComponent {
       );
       return appointmentDateTime >= currentDate;
     });
+
+    console.log(this.upcomingAppointments);
 
     // Preload pet names for upcoming appointments
     this.upcomingAppointments.forEach((appointment) => {

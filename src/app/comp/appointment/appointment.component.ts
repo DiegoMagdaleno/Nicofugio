@@ -130,17 +130,12 @@ export class AppointmentComponent {
       (a) => a.date === dateString
     );
     if (!appointments.length) return null;
-    const roundedMinutes = Math.ceil(minutes / 15) * 15;
-    let roundedHours = hours;
-    if (roundedMinutes === 60) {
-      roundedHours += 1;
-    }
-    const roundedTime = new Date();
-    roundedTime.setHours(roundedHours);
-    roundedTime.setMinutes(roundedMinutes);
-    const roundedTimeString = this.datePipe.transform(roundedTime, 'HH:mm');
-    if (!roundedTimeString) return null;
-    const appointment = appointments.find((a) => a.time === roundedTimeString);
+    const timeD = new Date();
+    timeD.setMinutes(minutes);
+    timeD.setHours(hours);
+    const dateTimeString = this.datePipe.transform(timeD, 'HH:mm');
+    if (!dateTimeString) return null;
+    const appointment = appointments.find((a) => a.time === dateTimeString);
     if (appointment) {
       return { invalidTime: true };
     }
