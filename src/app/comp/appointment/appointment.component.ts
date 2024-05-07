@@ -26,6 +26,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { ToastrService } from 'ngx-toastr';
 import { Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { PetsService } from '../../serv/pets.service';
 
 @Component({
   selector: 'app-appointment',
@@ -55,7 +56,7 @@ export class AppointmentComponent {
     private datePipe: DatePipe,
     private appointmentService: AppointmentsService,
     private router: Router,
-    private toaster: ToastrService
+    private toaster: ToastrService,
   ) {}
 
   ngOnInit(): void {

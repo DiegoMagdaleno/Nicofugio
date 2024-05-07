@@ -60,7 +60,7 @@
                                 <td class="tw-text-md">{{ appointment.name }}</td>
                                 <td class="tw-text-md">{{ appointment.date }} </td>
                                 <td class="tw-text-md">{{ appointment.time }}</td>
-                                <td class="tw-text-md">{{ appointment.petId }}</td>
+                                <td class="tw-text-md">{{ getPetName(appointment.petId) }}</td>
                                 <td class="tw-text-md"><button class="tw-text-blue-500" (click)="openInfoDialog(appointment)">Ver</button></td>
                             </tr>
                             }
