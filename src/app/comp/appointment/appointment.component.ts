@@ -157,6 +157,7 @@ export class AppointmentComponent {
   }
 
   onCancel(): void {
+    this.toaster.error('Cita cancelada', '¡Cancelado!');
     this.router.navigate(['/gallery']);
   }
 }
