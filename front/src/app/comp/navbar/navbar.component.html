@@ -1,37 +1,32 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div>
-        <a class="navbar-brand" routerLink="/">
-            <img src="assets/Logo.png" alt="Logo" width="50" height="50">
+<nav class="tw-shadow-md tw-sticky tw-top-0 tw-backdrop-blur-md tw-bg-white/75 tw-z-30">
+    <div class="tw-container tw-mx-auto tw-flex tw-items-center tw-justify-between tw-py-4">
+        <a class="tw-flex tw-items-center" routerLink="/">
+            <img src="assets/Logo.png" alt="Logo" class="tw-w-12 tw-h-12">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        <button class="tw-block lg:tw-hidden tw-p-2 tw-border tw-rounded tw-border-gray-400" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <div class="tw-hidden lg:tw-flex tw-flex-grow tw-items-center tw-justify-center tw-space-x-8" id="navbarNavAltMarkup">
+            <a class="tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600" routerLink="/about">Acerca de</a>
+            <a class="tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600" routerLink="/gallery">Adopta</a>
+            <a class="tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600" routerLink="/donations">Dona</a>
+            <a class="tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600" routerLink="/contact">Contacto</a>
+            <a class="tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600" routerLink="/events">Eventos</a>
+        </div>
+        <div class="tw-hidden lg:tw-flex tw-items-center tw-space-x-4">
+            <a class="tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600" routerLink="/login">Iniciar Sesion</a>
+        </div>
     </div>
-    <div class="collapse navbar-collapse tw-justify-center tw-w-full" id="navbarNavAltMarkup">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link font-weight-bold text-body" routerLink="/about">Acerca de</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link font-weight-bold text-body" routerLink="/gallery">Adopta</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link font-weight-bold text-body" routerLink="/donations">Dona</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link font-weight-bold text-body" routerLink="/contact">Contacto</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link font-weight-bold text-body" routerLink="/events">Eventos</a>
-            </li>
-        </ul>
-    </div>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link font-weight-bold text-body" routerLink="/appointments">Citas</a>
-            </li>
-        </ul>
+    <div class="lg:tw-hidden collapse" id="navbarNavAltMarkup">
+        <div class="tw-py-2 tw-space-y-2">
+            <a class="tw-block tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600" routerLink="/about">Acerca de</a>
+            <a class="tw-block tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600" routerLink="/gallery">Adopta</a>
+            <a class="tw-block tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600" routerLink="/donations">Dona</a>
+            <a class="tw-block tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600" routerLink="/contact">Contacto</a>
+            <a class="tw-block tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600" routerLink="/events">Eventos</a>
+            <a class="tw-block tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600" routerLink="/signup">Sign Up</a>
+            <a class="tw-block tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600" routerLink="/login">Login</a>
+        </div>
     </div>
 </nav>
