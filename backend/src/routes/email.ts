@@ -42,3 +42,5 @@ router.get('/contact', (req: Request, res: Response) => {
         }
     })
 });
+
+export default router;

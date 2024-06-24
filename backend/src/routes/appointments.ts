@@ -86,3 +86,5 @@ router.delete("/:id", async (req: Request, res: Response) => {
       .send({ message: "¡Ocurrio un error al eliminar la cita!", error });
   }
 });
+
+export default router;

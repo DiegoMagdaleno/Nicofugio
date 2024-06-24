@@ -1,18 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Appointment } from '../model/appointment';
+import { WebAPIService } from './web/web-api.service';
+
+const URL = 'http://localhost:3000';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AppointmentsService {
-
-  constructor() { }
+  constructor(private web: WebAPIService) {}
 
   getAppointments(): Appointment[] {
-    if (!localStorage.getItem('appointments')) {
-      localStorage.setItem('appointments', '[]');
-    }
-    return JSON.parse(localStorage.getItem('appointments') || '[]');
+    let appointments: Appointment[] = [];
+    this.web
+      .get(`${URL}/appointments`)
+      .subscribe((appointments: Appointment[]) => {
+        appointments = appointments;
+      });
+    return appointments;
   }
 
   saveAppointments(appointments: Appointment[]): void {
@@ -20,23 +25,24 @@ export class AppointmentsService {
   }
 
   addAppointment(appointment: Appointment): void {
-    const appointments = this.getAppointments();
-    appointments.push(appointment);
-    this.saveAppointments(appointments);
+    this.web.post(`${URL}/appointments`, appointment).subscribe();
   }
 
-  getAppointment(id: number): Appointment {
-    const appointments = this.getAppointments();
-    return appointments.find(a => a.id === id) as Appointment;
+  getAppointment(id: string): Appointment {
+    let appointment = {} as Appointment;
+    this.web
+      .get(`${URL}/appointments/${id}`)
+      .subscribe((a: Appointment) => (appointment = a));
+    return appointment;
   }
 
   getAppointmentsAt(date: string): Appointment[] {
     const appointments = this.getAppointments();
-    return appointments.filter(a => a.date === date);
+    return appointments.filter((a) => a.date === date);
   }
 
   getAppointmentsForPet(petId: number): Appointment[] {
     const appointments = this.getAppointments();
-    return appointments.filter(a => a.petId === petId);
+    return appointments.filter((a) => a.petId === petId);
   }
 }
