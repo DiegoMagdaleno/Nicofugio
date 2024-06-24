@@ -1,0 +1,62 @@
+<main class="dog-pattern tw-flex tw-h-screen tw-bg-blue-500 tw-relative">
+    <div
+        class="tw-w-full tw-max-w-lg tw-m-auto tw-bg-blue-100 tw-rounded tw-p-5 tw-shadow-md tw-backdrop-blur-md tw-relative">
+        <button type="button"
+            class="tw-absolute tw-top-4 tw-left-4 tw-text-blue-500 tw-bg-transparent tw-border-none tw-text-2xl">
+            &larr;
+        </button>
+        <img src="assets/Logo.png" alt="Logo" class="tw-w-24 tw-h-24 tw-m-auto tw-mb-5">
+        <h1 class="tw-text-3xl tw-text-center tw-font-bold tw-text-blue-500 tw-mb-5">Crea una cuenta en Nicofugio</h1>
+        <form #signUpForm="ngForm" (ngSubmit)="onSubmit(signUpForm)">
+            <div>
+                <label class="tw-block tw-mb-2 tw-text-blue-500" for="name">Nombre</label>
+                <input [(ngModel)]="name" name="name" #nameModel="ngModel" required
+                    class="tw-w-full tw-p-2 tw-mb-6 tw-text-blue-700 tw-border-b-2 tw-border-blue-500 tw-outline-none tw-focus:bg-gray-300"
+                    type="text">
+                <div *ngIf="nameModel.invalid && nameModel.touched" class="tw-text-red-500">El nombre es requerido.</div>
+            </div>
+            <div>
+                <label class="tw-block tw-mb-2 tw-text-blue-500" for="email">Correo electrónico</label>
+                <input [(ngModel)]="email" name="email" #emailModel="ngModel" required email
+                    class="tw-w-full tw-p-2 tw-mb-6 tw-text-blue-700 tw-border-b-2 tw-border-blue-500 tw-outline-none tw-focus:bg-gray-300"
+                    type="email">
+                <div *ngIf="emailModel.invalid && emailModel.touched" class="tw-text-red-500">Correo electrónico válido es
+                    requerido.</div>
+            </div>
+            <div>
+                <label class="tw-block tw-mb-2 tw-text-blue-500" for="password">Contraseña</label>
+                <input [(ngModel)]="password" name="password" #passwordModel="ngModel" required minlength="6"
+                    class="tw-w-full tw-p-2 tw-mb-6 tw-text-blue-700 tw-border-b-2 tw-border-blue-500 tw-outline-none tw-focus:bg-gray-300"
+                    type="password">
+                <div *ngIf="passwordModel.invalid && passwordModel.touched" class="tw-text-red-500">La contraseña debe tener al
+                    menos 6 caracteres.</div>
+            </div>
+            <div>
+                <label class="tw-block tw-mb-2 tw-text-blue-500" for="confirmPassword">Confirmar Contraseña</label>
+                <input [(ngModel)]="confirmPassword" name="confirmPassword" #confirmPasswordModel="ngModel" required
+                    class="tw-w-full tw-p-2 tw-mb-6 tw-text-blue-700 tw-border-b-2 tw-border-blue-500 tw-outline-none tw-focus:bg-gray-300"
+                    type="password">
+                <div *ngIf="confirmPasswordModel.invalid && confirmPasswordModel.touched" class="tw-text-red-500">Confirma tu
+                    contraseña.</div>
+            </div>
+            <div>
+                <label class="tw-block tw-mb-2 tw-text-blue-500" for="phoneNumber">Número de Teléfono</label>
+                <input [(ngModel)]="phoneNumber" name="phoneNumber" #phoneNumberModel="ngModel" required
+                    class="tw-w-full tw-p-2 tw-mb-6 tw-text-blue-700 tw-border-b-2 tw-border-blue-500 tw-outline-none tw-focus:bg-gray-300"
+                    type="tel">
+                <div *ngIf="phoneNumberModel.invalid && phoneNumberModel.touched" class="tw-text-red-500">Número de teléfono es
+                    requerido.</div>
+            </div>
+            <div id="captcha-container" class="tw-mb-6"></div>
+            <div>
+                <button
+                    class="tw-w-full tw-bg-blue-500 tw-hover:bg-pink-700 tw-text-white tw-py-2 tw-px-4 tw-mb-6 tw-rounded"
+                    type="submit">Registrarse</button>
+            </div>
+        </form>
+        <div class="tw-text-center tw-mt-4">
+            <p class="tw-text-blue-500">¿Ya tienes cuenta? <a href="#" class="tw-text-blue-700 tw-font-bold">¡Inicia
+                    sesión!</a></p>
+        </div>
+    </div>
+</main>
