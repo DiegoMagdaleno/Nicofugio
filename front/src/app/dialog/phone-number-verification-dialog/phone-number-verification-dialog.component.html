@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Verificar numero de telefono</h2>
+<div mat-dialog-content>
+    <form [formGroup]="verificationForm">
+        <mat-form-field>
+            <mat-label>Codigo de verification</mat-label>
+            <input matInput formControlName="code" placeholder="Enter verification code">
+            <mat-error *ngIf="verificationForm?.get('code')?.hasError('required')">El codigo de verificacion es
+                requerido</mat-error>
+            <mat-error *ngIf="verificationForm?.get('code')?.hasError('minlength')">El codigo de verificacion, deberia
+                de ser de 6 digitos.</mat-error>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button [disabled]="!verificationForm.valid" (click)="onVerify()">Verificar</button>
+</div>

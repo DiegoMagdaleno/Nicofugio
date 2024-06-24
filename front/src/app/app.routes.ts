@@ -7,6 +7,7 @@ import { AboutComponent } from './static/about/about.component';
 import { DonationsComponent } from './static/donations/donations.component';
 import { ContactComponent } from './static/contact/contact.component';
 import { EventsComponent } from './static/events/events.component';
+import { LoginComponent } from './auth/login/login.component';
 
 
 export const routes: Routes = [
@@ -42,5 +43,9 @@ export const routes: Routes = [
   {
     path: 'events',
     component: EventsComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
