@@ -87,8 +87,41 @@ router.delete("/:id", async (req: Request, res: Response) => {
   }
 });
 
-router.get('/qr/:id', async (req: Request, res: Response) => {
-  res.status(200).send({ qr: "Hola!!!"});
-})
+router.get("/qr/:id", async (req, res) => {
+  // Get the appointment data
+  const doc = await db.collection("appointments").doc(req.params.id).get();
+  if (!doc.exists) {
+    res.status(404).send({ message: "¡Cita no encontrada!" });
+    return;
+  }
+  const appointment = doc.data() as Appointment;
+
+  let appointmentDateSplit = appointment.date.split("/");
+  let appointmentTimeSplit = appointment.time.split(":");
+  const startDate = new Date(
+    `${appointmentDateSplit[2]}-${appointmentDateSplit[1]}-${appointmentDateSplit[0]}T${appointmentTimeSplit[0]}:${appointmentTimeSplit[1]}:00Z`
+  );
+
+  let calcEndDate = new Date(startDate);
+  calcEndDate.setMinutes(calcEndDate.getMinutes() + 30);
+  const endDate = calcEndDate;
+
+  const eventTitle = "Cita de adopción";
+  const calendarEventData = `BEGIN:VEVENT
+SUMMARY:${eventTitle}
+DTSTART:${startDate.toISOString().replace(/[-:]/g, "").slice(0, -5)}
+DTEND:${endDate.toISOString().replace(/[-:]/g, "").slice(0, -5)}
+END:VEVENT`;
+
+  const calendarData = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Your Company//NONSGML Event//EN
+${calendarEventData}
+END:VCALENDAR`;
+
+  res.status(200).send({ qr: calendarData });
+});
+
+module.exports = router;
 
 export default router;
