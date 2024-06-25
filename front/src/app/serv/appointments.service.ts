@@ -45,4 +45,8 @@ export class AppointmentsService {
   getAppointmentsForEmail(email: string) {
     return this.web.get(`${URL}/appointments/email/${email}`);
   }
+
+  cancelAppointment(id: string) {
+    return this.web.delete(`${URL}/appointments/${id}`);
+  }
 }
