@@ -25,7 +25,7 @@
           <h5 class="card-title">{{pet.name}}</h5>
           <p class="card-text">{{pet.description}}</p>
           <p class="card-text"><small class="text-muted">Edad: {{pet.age}} años</small></p>
-          <a [routerLink]="['/pet-details', pet.id]" routerLinkActive="active" class="tw-text-white tw-p-2 tw-bg-blue-500 tw-rounded-md">Ver detalles</a>
+          <a (click)="adopt(pet.id)" routerLinkActive="active" class="tw-text-white tw-p-2 tw-bg-blue-500 tw-rounded-md">Ver detalles</a>
         </div>
       </div>
 
