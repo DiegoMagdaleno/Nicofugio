@@ -8,6 +8,7 @@ import { ContactComponent } from './static/contact/contact.component';
 import { EventsComponent } from './static/events/events.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { HomeComponent as AdminHomeComponent } from './admin/home/home.component';
 
 
 export const routes: Routes = [
@@ -47,5 +48,9 @@ export const routes: Routes = [
   {
     path: 'signup',
     component: SignUpComponent
+  },
+  {
+    path: 'admin-panel',
+    component: AdminHomeComponent
   }
 ];
