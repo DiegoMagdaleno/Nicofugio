@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { WebAPIService } from '../../serv/web/web-api.service';
 import { Auth } from '@angular/fire/auth';
 import { Appointment } from '../../model/appointment';
@@ -14,16 +14,18 @@ import {
   MatDialogClose,
 } from '@angular/material/dialog';
 import { AppointmentCardComponent } from '../../comp/appointment-card/appointment-card.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-appointments-dialog',
   standalone: true,
-  imports: [CommonModule, AppointmentCardComponent],
+  imports: [CommonModule, AppointmentCardComponent, MatProgressSpinnerModule],
   templateUrl: './appointments-dialog.component.html',
-  styleUrl: './appointments-dialog.component.scss',
+  styleUrls: ['./appointments-dialog.component.scss'],
 })
-export class AppointmentsDialogComponent {
+export class AppointmentsDialogComponent implements OnInit {
   appointments: Appointment[] = [];
+  isLoading: boolean = true;
 
   constructor(
     public dialogRef: MatDialogRef<AppointmentsDialogComponent>,
@@ -33,8 +35,15 @@ export class AppointmentsDialogComponent {
   ) {}
 
   ngOnInit() {
-    this.appointmentService.getAppointmentsForEmail(this.auth.currentUser!.email!).subscribe((appointments) => {
-      this.appointments = appointments;
-    });
+    this.appointmentService
+      .getAppointmentsForEmail(this.auth.currentUser!.email!)
+      .subscribe((appointments) => {
+        this.appointments = appointments;
+        this.isLoading = false;
+      });
+  }
+
+  trackByIndex(index: number, appointment: Appointment): number {
+    return index;
   }
 }
