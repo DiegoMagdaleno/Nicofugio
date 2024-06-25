@@ -52,5 +52,5 @@ export const routes: Routes = [
   {
     path: 'admin-panel',
     component: AdminHomeComponent
-  }
+  },
 ];
