@@ -20,10 +20,6 @@ export class AppointmentsService {
     return appointments;
   }
 
-  saveAppointments(appointments: Appointment[]): void {
-    localStorage.setItem('appointments', JSON.stringify(appointments));
-  }
-
   addAppointment(appointment: Appointment): void {
     this.web.post(`${URL}/appointments`, appointment).subscribe();
   }
