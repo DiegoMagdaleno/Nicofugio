@@ -79,7 +79,7 @@ router.put("/:id", async (req: Request, res: Response) => {
 router.delete("/:id", async (req: Request, res: Response) => {
   try {
     await db.collection("appointments").doc(req.params.id).delete();
-    res.status(204).send();
+    res.status(204).send({ message: "¡Cita eliminada con éxito!" });
   } catch (error) {
     res
       .status(500)
