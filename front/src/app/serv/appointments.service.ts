@@ -19,6 +19,10 @@ export class AppointmentsService {
       });
     return appointments;
   }
+  
+  getAllAppointments() {
+    return this.web.get(`${URL}/appointments`);
+  }
 
   addAppointment(appointment: Appointment) {
     return this.web.post(`${URL}/appointments`, appointment);
