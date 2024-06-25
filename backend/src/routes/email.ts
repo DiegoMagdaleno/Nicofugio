@@ -3,6 +3,7 @@ import { transporter, baseOptions } from "../base/email";
 import express, {Request, Response} from "express";
 import { db } from "../firebase";
 import { Appointment } from "../model/appointment";
+import axios from "axios";
 
 const router = express.Router();
 
@@ -47,23 +48,27 @@ router.post('/contact', (req: Request, res: Response) => {
     })
 });
 
-router.post('/appointment', (req: Request, res: Response) => {
+router.post('/appointment', async (req: Request, res: Response) => {
     let { appointmentId } = req.body;
 
-    console.log(appointmentId);
+    const petsResponse = await axios.get(
+        "https://gist.githubusercontent.com/DiegoMagdaleno/d1293fe76c253c22479c0c9f23132327/raw/ede111e5de0f7a4bb35895077bc49e1841b3ee2a/pets.json"
+      );
+    const pets = petsResponse.data;
 
     let appointmentRef = db.collection('appointments').doc(appointmentId);
 
     appointmentRef.get().then((doc) => {
         if (!doc.exists) {
             res.status(404).send({ message: "¡Cita no encontrada!" });
-        } else {
+        } else { 
             let appointment = doc.data() as Appointment;
+            const petName = pets.find((p: any) => p.id === appointment.petId).name;
             let mailOptions = {
                 ...baseOptions,
                 to: appointment.email,
-                subject: `Cita de adopcion para ${appointment.petId}`,
-                text: `Hola, ${appointment.name}. Tu cita para adoptar a ${appointment.petId} ha sido agendada para el ${appointment.date} a las ${appointment.time}. ¡Te esperamos!`
+                subject: `Cita de adopcion para ${petName}`,
+                text: `Hola, ${appointment.name}. Tu cita para adoptar a ${petName} ha sido agendada para el ${appointment.date} a las ${appointment.time}. ¡Te esperamos!`
             }
 
             transporter.sendMail(mailOptions, function (error: Error | null, info: SMTPTransport.SentMessageInfo) {
