@@ -1,6 +1,8 @@
 import SMTPTransport from "nodemailer/lib/smtp-transport";
 import { transporter, baseOptions } from "../base/email";
 import express, {Request, Response} from "express";
+import { db } from "../firebase";
+import { Appointment } from "../model/appointment";
 
 const router = express.Router();
 
@@ -44,5 +46,39 @@ router.post('/contact', (req: Request, res: Response) => {
         }
     })
 });
+
+router.post('/appointment', (req: Request, res: Response) => {
+    let { appointmentId } = req.body;
+
+    let appointmentRef = db.collection('appointments').doc(appointmentId);
+
+    appointmentRef.get().then((doc) => {
+        if (!doc.exists) {
+            res.status(404).send({ message: "¡Cita no encontrada!" });
+        } else {
+            let appointment = doc.data() as Appointment;
+            let mailOptions = {
+                ...baseOptions,
+                to: appointment.email,
+                subject: `Cita de adopcion para ${appointment.petId}`,
+                text: `Hola, ${appointment.name}. Tu cita para adoptar a ${appointment.petId} ha sido agendada para el ${appointment.date} a las ${appointment.time}. ¡Te esperamos!`
+            }
+
+            transporter.sendMail(mailOptions, function (error: Error | null, info: SMTPTransport.SentMessageInfo) {
+                if (error) {
+                    res.send(res.json({
+                        message: "Error al enviar el correo electrónico",
+                    }))
+                } else {
+                    res.send(res.json({
+                        message: "Correo electrónico enviado",
+                    }))
+                }
+            });
+        }
+    })
+
+
+})
 
 export default router;
