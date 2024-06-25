@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
+import { AppointmentsDialogComponent } from '../../dialog/appointments-dialog/appointments-dialog.component';
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +17,11 @@ export class NavbarComponent implements OnInit {
   userDetails: { displayName: string } = { displayName: '' };
   isDropdownOpen: boolean = false;
 
-  constructor(public auth: Auth, private router: Router) {}
+  constructor(
+    public auth: Auth,
+    private router: Router,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit() {
     this.auth.onAuthStateChanged((user) => {
@@ -34,5 +40,9 @@ export class NavbarComponent implements OnInit {
       this.router.navigate(['/']);
       this.isDropdownOpen = false;
     });
+  }
+
+  openAppointmentsDialog() {
+    this.dialog.open(AppointmentsDialogComponent, {});
   }
 }

@@ -41,4 +41,8 @@ export class AppointmentsService {
     const appointments = this.getAppointments();
     return appointments.filter((a) => a.petId === petId);
   }
+
+  getAppointmentsForEmail(email: string) {
+    return this.web.get(`${URL}/appointments/email/${email}`);
+  }
 }

@@ -30,7 +30,7 @@
                 <div *ngIf="isDropdownOpen"
                     class="tw-absolute tw-right-0 tw-mt-2 tw-w-48 tw-bg-white tw-border tw-rounded-md tw-shadow-lg tw-py-2">
                     <a class="tw-block tw-px-4 tw-py-2 tw-text-gray-700 hover:tw-bg-gray-100"
-                        routerLink="/my-appointments">Mis citas</a>
+                        (click)="openAppointmentsDialog()">Mis citas</a>
                     <a class="tw-block tw-px-4 tw-py-2 tw-text-gray-700 hover:tw-bg-gray-100" (click)="logout()">Cerrar
                         sesion</a>
                 </div>
