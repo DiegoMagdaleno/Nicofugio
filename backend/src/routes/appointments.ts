@@ -87,4 +87,8 @@ router.delete("/:id", async (req: Request, res: Response) => {
   }
 });
 
+router.get('/qr/:id', async (req: Request, res: Response) => {
+  res.status(200).send({ qr: "Hola!!!"});
+})
+
 export default router;
