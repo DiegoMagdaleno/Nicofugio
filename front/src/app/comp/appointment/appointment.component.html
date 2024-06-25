@@ -1,45 +1,4 @@
 <form class="tw-p-8" [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
-    <div>
-        <h3 class="tw-text-lg tw-font-bold tw-mb-2">Datos personales</h3>
-        <div class="tw-flex tw-gap-4">
-            <mat-form-field>
-                <mat-label>Nombre y Apellido</mat-label>
-                <input matInput placeholder="Nombre y apellido" formControlName="name">
-                @if (appointmentForm.get('name')?.hasError('required')) {
-                <mat-error>El nombre es obligatorio</mat-error>
-                }
-                @if (appointmentForm.get('name')?.hasError('minlength')) {
-                <mat-error>El nombre debe contener al menos 3 caracteres</mat-error>
-                }
-                @if (appointmentForm.get('name')?.hasError('noSpace')) {
-                <mat-error>El nombre debe contener al menos un espacio</mat-error>
-                }
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label>Email</mat-label>
-                <input matInput type="email" placeholder="Email" formControlName="email">
-                @if (appointmentForm.get('email')?.hasError('required')) {
-                <mat-error>El email es obligatorio</mat-error>
-                }
-                @if (appointmentForm.get('email')?.hasError('email')) {
-                <mat-error>El email no es válido</mat-error>
-                }
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label>Teléfono</mat-label>
-                <input matInput type="tel" placeholder="Teléfono" formControlName="phone">
-                @if (appointmentForm.get('phone')?.hasError('required')) {
-                <mat-error>El teléfono es obligatorio</mat-error>
-                }
-                @if (appointmentForm.get('phone')?.hasError('pattern')) {
-                <mat-error>El teléfono no es válido</mat-error>
-                }
-            </mat-form-field>
-
-        </div>
-    </div>
     <div class="tw-flex tw-flex-col">
         <h3 class="tw-text-lg tw-font-bold tw-mb-2">Datos de la cita</h3>
         <div class="tw-flex tw-space-x-4 tw-items-center tw-justify-center">

@@ -27,6 +27,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { PetsService } from '../../serv/pets.service';
+import { Auth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-appointment',
@@ -57,21 +58,12 @@ export class AppointmentComponent {
     private appointmentService: AppointmentsService,
     private router: Router,
     private toaster: ToastrService,
+    private auth: Auth
   ) {}
 
   ngOnInit(): void {
     this.appointmentForm = this.formBuilder.group({
       date: ['', Validators.required],
-      name: [
-        '',
-        [
-          Validators.required,
-          this.containsSpaceSeparator,
-          Validators.minLength(3),
-        ],
-      ],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       notes: '',
       time: new FormControl({ value: '', disabled: true }, [
         Validators.required,
@@ -93,13 +85,17 @@ export class AppointmentComponent {
     );
     this.appointmentForm.value.date = formatedDate;
     this.appointmentForm.value.time = formatedTime;
+    const currentUser = this.auth.currentUser!;
     const appointmentDetails = {
       ...this.appointmentForm.value,
       petId: this.petId,
-    }
-    this.appointmentService.addAppointment(
-      appointmentDetails as Appointment
-    );
+      email: currentUser.email,
+      phone: currentUser.phoneNumber,
+      name: currentUser.displayName,
+    };
+    
+
+    this.appointmentService.addAppointment(appointmentDetails as Appointment);
     this.appointmentForm.reset();
     Object.keys(this.appointmentForm.controls).forEach((key) => {
       this.appointmentForm.get(key)?.setErrors(null);
@@ -126,9 +122,9 @@ export class AppointmentComponent {
     if (!date) return null;
     const dateString = this.datePipe.transform(date, 'dd/MM/yyyy');
     if (!dateString) return null;
-    const appointments = this.appointmentService.getAppointmentsForPet(this.petId).filter(
-      (a) => a.date === dateString
-    );
+    const appointments = this.appointmentService
+      .getAppointmentsForPet(this.petId)
+      .filter((a) => a.date === dateString);
     if (!appointments.length) return null;
     const timeD = new Date();
     timeD.setMinutes(minutes);
