@@ -43,6 +43,8 @@ export class NavbarComponent implements OnInit {
   }
 
   openAppointmentsDialog() {
-    this.dialog.open(AppointmentsDialogComponent, {});
+    this.dialog.open(AppointmentsDialogComponent, {
+      width: '80%'
+    });
   }
 }

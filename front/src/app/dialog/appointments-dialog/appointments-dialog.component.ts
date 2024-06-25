@@ -13,11 +13,12 @@ import {
   MatDialogActions,
   MatDialogClose,
 } from '@angular/material/dialog';
+import { AppointmentCardComponent } from '../../comp/appointment-card/appointment-card.component';
 
 @Component({
   selector: 'app-appointments-dialog',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, AppointmentCardComponent],
   templateUrl: './appointments-dialog.component.html',
   styleUrl: './appointments-dialog.component.scss',
 })
@@ -35,6 +36,5 @@ export class AppointmentsDialogComponent {
     this.appointmentService.getAppointmentsForEmail(this.auth.currentUser!.email!).subscribe((appointments) => {
       this.appointments = appointments;
     });
-    console.log(this.auth.currentUser!.email!);
   }
 }
