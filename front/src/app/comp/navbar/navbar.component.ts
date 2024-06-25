@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { AppointmentsDialogComponent } from '../../dialog/appointments-dialog/appointments-dialog.component';
+import { AuthService } from '../../serv/auth/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,18 +17,22 @@ import { AppointmentsDialogComponent } from '../../dialog/appointments-dialog/ap
 export class NavbarComponent implements OnInit {
   userDetails: { displayName: string } = { displayName: '' };
   isDropdownOpen: boolean = false;
+  isAdmin: boolean = false;
 
   constructor(
     public auth: Auth,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
-    this.auth.onAuthStateChanged((user) => {
+    this.auth.onAuthStateChanged(async (user) => {
       if (user) {
         this.userDetails.displayName = user.displayName || 'User';
+        this.isAdmin = await this.authService.checkUserIsAdmin(user.uid);
       }
+      console.log(await this.authService.checkUserIsAdmin(user!.uid));
     });
   }
 
