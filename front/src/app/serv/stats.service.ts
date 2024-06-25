@@ -2,27 +2,26 @@ import { Injectable } from '@angular/core';
 import { WebAPIService } from './web/web-api.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StatsService {
+  baseURL = 'http://localhost:3000';
 
-  baseURL = "http://localhost:3000"
+  constructor(private web: WebAPIService) {}
 
-  constructor(private web: WebAPIService) { }
+  getStatsForGraph() {
+    return this.web.get(`${this.baseURL}/stats`);
+  }
 
   getUsersLastMonth() {
-    return this.web.get(`${this.baseURL}/stats/users`)
+    return this.web.get(`${this.baseURL}/stats/users`);
   }
 
   getMostPopularSpecie() {
-    return this.web.get(`${this.baseURL}/stats/popular`)
+    return this.web.get(`${this.baseURL}/stats/popular`);
   }
 
   getAppointmentsLastMonth() {
-    return this.web.get(`${this.baseURL}/stats/app-month`)
-  }
-  
-  getStatsOfPetsAppointments() {
-    return this.web.get(`${this.baseURL}/stats`)
+    return this.web.get(`${this.baseURL}/stats/app-month`);
   }
 }
