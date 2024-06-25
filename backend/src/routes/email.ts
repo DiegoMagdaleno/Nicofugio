@@ -4,8 +4,10 @@ import express, {Request, Response} from "express";
 
 const router = express.Router();
 
-router.get('/contact', (req: Request, res: Response) => {
+router.post('/contact', (req: Request, res: Response) => {
     let { email, name, message } = req.body;
+
+    console.log(email, name, message);
 
     const mailOptions = {
         ...baseOptions,
