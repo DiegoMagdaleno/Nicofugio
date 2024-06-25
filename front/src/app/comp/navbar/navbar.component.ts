@@ -18,6 +18,7 @@ export class NavbarComponent implements OnInit {
   userDetails: { displayName: string } = { displayName: '' };
   isDropdownOpen: boolean = false;
   isAdmin: boolean = false;
+  isMobileMenuOpen: boolean = false;
 
   constructor(
     public auth: Auth,
@@ -40,10 +41,15 @@ export class NavbarComponent implements OnInit {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
 
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
   logout() {
     this.auth.signOut().then(() => {
       this.router.navigate(['/']);
       this.isDropdownOpen = false;
+      this.isMobileMenuOpen = false;
     });
   }
 
