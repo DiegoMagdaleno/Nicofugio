@@ -4,6 +4,8 @@ import { PetsService } from '../../serv/pets.service';
 import { Pet } from '../../model/pet';
 import { OnInit } from '@angular/core';
 import { AppointmentsService } from '../../serv/appointments.service';
+import { MatDialog } from '@angular/material/dialog';
+import { QrDialogComponent } from '../../dialog/qr-dialog/qr-dialog.component';
 
 @Component({
   selector: 'app-appointment-card',
@@ -18,7 +20,8 @@ export class AppointmentCardComponent implements OnInit {
 
   constructor(
     private petsService: PetsService,
-    private appointmentService: AppointmentsService
+    private appointmentService: AppointmentsService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -28,8 +31,12 @@ export class AppointmentCardComponent implements OnInit {
   }
 
   cancelAppointment(id: string) {
-    this.appointmentService.cancelAppointment(id).subscribe(() => {
-      
+    this.appointmentService.cancelAppointment(id).subscribe(() => {});
+  }
+
+  openQRCodeDialog(id: string) {
+    this.dialog.open(QrDialogComponent, {
+      data: { id },
     });
   }
 }

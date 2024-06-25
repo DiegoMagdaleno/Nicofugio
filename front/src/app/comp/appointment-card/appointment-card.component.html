@@ -1,6 +1,6 @@
 <div class="tw-max-w-sm tw-rounded tw-overflow-hidden tw-shadow-lg tw-bg-white tw-p-6">
     <div class="tw-flex tw-justify-center tw-mb-4">
-      <img class="tw-rounded tw-h-32 tw-w-32 tw-object-cover" [src]="pet.imageUrl" alt="{{ pet.name }}">
+      <img class="tw-rounded tw-h-32 tw-w-32 tw-object-cover" [src]="pet.imageUrl">
     </div>
     <div class="tw-font-bold tw-text-xl tw-mb-2">{{ pet.name }}</div>
     <p class="tw-text-gray-700 tw-text-base">
@@ -35,7 +35,7 @@
     </div>
   
     <div class="tw-mt-4 tw-flex tw-justify-between">
-      <button class="tw-bg-blue-500 tw-hover:bg-blue-700 tw-text-white tw-font-bold tw-py-2 tw-px-4 tw-rounded">
+      <button class="tw-bg-blue-500 tw-hover:bg-blue-700 tw-text-white tw-font-bold tw-py-2 tw-px-4 tw-rounded" (click)="openQRCodeDialog(appointment.id)">
         <i class="fas fa-qrcode tw-mr-2"></i> Ver QR
       </button>
       <button class="tw-bg-red-500 tw-hover:bg-red-700 tw-text-white tw-font-bold tw-py-2 tw-px-4 tw-rounded" (click)="cancelAppointment(appointment.id)">
