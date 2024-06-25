@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { PhoneNumberVerificationDialogComponent } from '../../dialog/phone-number-verification-dialog/phone-number-verification-dialog.component';
 import { Router, RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,8 @@ export class LoginComponent implements AfterViewInit {
     private auth: Auth,
     private authSelf: AuthService,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   onCredentialInputChange(event: Event) {
@@ -48,7 +50,19 @@ export class LoginComponent implements AfterViewInit {
 
   onSubmit() {
     if (this.mode === 'email') {
-      this.authSelf.logIn(this.credential, this.password);
+      this.authSelf
+        .logIn(this.credential, this.password)
+        .then((credential) => {
+          this.toastr.success(
+            `Bienvenido de nuevo, ${credential.user.displayName}!`
+          );
+          this.router.navigate(['/']);
+        })
+        .catch((error) => {
+          this.toastr.error(
+            'Error al iniciar sesión. Verifica tus credenciales'
+          );
+        });
     } else if (this.mode === 'phone') {
       this.authSelf
         .sendVerificationCode(this.credential, this.appVerifier)
