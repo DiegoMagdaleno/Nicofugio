@@ -50,6 +50,8 @@ router.post('/contact', (req: Request, res: Response) => {
 router.post('/appointment', (req: Request, res: Response) => {
     let { appointmentId } = req.body;
 
+    console.log(appointmentId);
+
     let appointmentRef = db.collection('appointments').doc(appointmentId);
 
     appointmentRef.get().then((doc) => {

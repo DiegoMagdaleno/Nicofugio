@@ -28,6 +28,7 @@ import { Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { PetsService } from '../../serv/pets.service';
 import { Auth } from '@angular/fire/auth';
+import { EmailService } from '../../serv/email.service';
 
 @Component({
   selector: 'app-appointment',
@@ -52,13 +53,16 @@ export class AppointmentComponent {
   maxDate: Date = new Date(new Date().setMonth(new Date().getMonth() + 1));
   @Input() petId: number = 0;
 
+  baseURL = 'http://localhost:3000/';
+
   constructor(
     private formBuilder: FormBuilder,
     private datePipe: DatePipe,
     private appointmentService: AppointmentsService,
     private router: Router,
     private toaster: ToastrService,
-    private auth: Auth
+    private auth: Auth,
+    private email: EmailService
   ) {}
 
   ngOnInit(): void {
@@ -93,15 +97,20 @@ export class AppointmentComponent {
       phone: currentUser.phoneNumber,
       name: currentUser.displayName,
     };
-    
 
-    this.appointmentService.addAppointment(appointmentDetails as Appointment);
-    this.appointmentForm.reset();
-    Object.keys(this.appointmentForm.controls).forEach((key) => {
-      this.appointmentForm.get(key)?.setErrors(null);
-    });
-    this.router.navigate(['/gallery']);
-    this.toaster.success('Cita agendada con éxito', '¡Éxito!');
+    this.appointmentService
+      .addAppointment(appointmentDetails as Appointment)
+      .subscribe((data: any) => {
+        this.email.sendAppointmentEmail(data.id).subscribe((res) => {
+          this.appointmentForm.reset();
+          Object.keys(this.appointmentForm.controls).forEach((key) => {
+            this.appointmentForm.get(key)?.setErrors(null);
+          });
+          this.router.navigate(['/gallery']);
+
+          this.toaster.success('Cita agendada con éxito', '¡Éxito!');
+        });
+      });
   }
 
   containsSpaceSeparator(control: FormControl): ValidationErrors | null {

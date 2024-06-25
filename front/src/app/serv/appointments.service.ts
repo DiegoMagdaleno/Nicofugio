@@ -20,8 +20,8 @@ export class AppointmentsService {
     return appointments;
   }
 
-  addAppointment(appointment: Appointment): void {
-    this.web.post(`${URL}/appointments`, appointment).subscribe();
+  addAppointment(appointment: Appointment) {
+    return this.web.post(`${URL}/appointments`, appointment);
   }
 
   getAppointment(id: string): Appointment {
