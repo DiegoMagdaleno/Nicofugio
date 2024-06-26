@@ -9,6 +9,7 @@ import { EventsComponent } from './static/events/events.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { HomeComponent as AdminHomeComponent } from './admin/home/home.component';
+import { FaqComponent } from './static/faq/faq.component';
 
 
 export const routes: Routes = [
@@ -52,5 +53,9 @@ export const routes: Routes = [
   {
     path: 'admin-panel',
     component: AdminHomeComponent
+  },
+  {
+    path: 'faq',
+    component: FaqComponent
   },
 ];
