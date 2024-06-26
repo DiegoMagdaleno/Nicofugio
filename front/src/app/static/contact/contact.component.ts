@@ -17,7 +17,7 @@ import { AccesibilidadService } from '../../admin/boton-accesibilidad/accesibili
 export class ContactComponent implements OnInit {
   contactForm!: FormGroup;
 
-  baseURL = 'http://localhost:3000';
+  baseURL = ' https://backend.diegomagdaleno.tech';
 
   constructor(private web: WebAPIService, public accesibilidad: AccesibilidadService) {}
 

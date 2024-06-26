@@ -6,7 +6,7 @@ import { WebAPIService } from './web/web-api.service';
 })
 export class EmailService {
 
-  baseURL = 'http://localhost:3000';
+  baseURL = ' https://backend.diegomagdaleno.tech';
 
   constructor(private web: WebAPIService) { }
 

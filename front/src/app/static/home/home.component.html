@@ -13,9 +13,10 @@
                     >¿Que es un refugio?</button>
             </div>
         </div>
-        <div class="right-content">
-            <img src="assets/MainImage.png" alt="Adopta">
-        </div>
+    </div>
+    <div class="right-content tw-w-full lg:tw-w-1/2 tw-flex tw-justify-center lg:tw-justify-end tw-mt-4 lg:tw-mt-0">
+        <img src="assets/MainImage.png" alt="Adopta" class="img-fluid tw-w-full lg:tw-w-auto">
+    </div>
 </div>
 <div class="container-fluid tw-bg-blue-500" [ngClass]="{'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
     <div class="container" [ngClass]="{'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
@@ -24,11 +25,9 @@
                 <img src="assets/glass.png" alt="Adopta" class="img-fluid tw-w-1/4">
                 <h1 class="text-center mt-3 text-white tw-text-4xl">Acerca de Nicofugio</h1>
                 <h4 class="mt-3 font-weight-normal text-white">Nicofugio comenzo como un apoyo a los animales sin hogar.
-                    Para aquellos animalitos que han tenido la mala fortuna de vivir en situación en calle y/o que
-                    han sido abandonados por sus dueños. En Nicofugio tenemos como objetivo principal encontrar un hogar
-                    a aquellos
-                    animales que lo necesitan.
-                </h4>
+                    Para aquellos animalitos que han tenido la mala fortuna de vivir en situación en calle y/o que han
+                    sido abandonados por sus dueños. En Nicofugio tenemos como objetivo principal encontrar un hogar a
+                    aquellos animales que lo necesitan.</h4>
                 <button type="button" class="btn btn-lg btn-light tw-text-blue-500 mt-3" style="width: 150px;">Ver
                     más</button>
             </div>
@@ -37,28 +36,27 @@
     <br>
     <br>
 </div>
+
 <div class="container-fluid text-center">
     <div>
         <h2 class="mt-4 tw-text-4xl">¿Por que adoptar?</h2>
         <h3 class="mt-3 tw-text-gray-700 tw-flex-wrap">Adoptar un animal es una de las mejores decisiones que puedes
-            tomar. No solo
-            le das una segunda oportunidad a un animalito que lo necesita, sino que también le das un hogar y una
-            familia
-            amorosa.</h3>
+            tomar. No solo le das una segunda oportunidad a un animalito que lo necesita, sino que también le das un
+            hogar y una familia amorosa.</h3>
     </div>
     <div class="container-fluid text-center">
-        <div class="d-flex justify-content-around d-flex justify-content-around">
-            <div class="col d-flex flex-column justfiy-content-center align-items-center">
+        <div class="row d-flex justify-content-around">
+            <div class="col-12 col-md-4 d-flex flex-column justify-content-center align-items-center">
                 <img src="assets/oreofeliz.jpg" alt="Not Image Found" class="adopta rounded-circle">
                 <br>
                 <h2>Verás una carita de felicidad <br> en tu lomito</h2>
             </div>
-            <div class="col d-flex flex-column justfiy-content-center align-items-center">
+            <div class="col-12 col-md-4 d-flex flex-column justify-content-center align-items-center">
                 <img src="assets/oreoyyo.jpg" alt="Not Image Found" class="adopta rounded-circle">
                 <br>
                 <h2>Tendrás una gran sonrisa siempre <br> que estés con él</h2>
             </div>
-            <div class="col d-flex flex-column justfiy-content-center align-items-center">
+            <div class="col-12 col-md-4 d-flex flex-column justify-content-center align-items-center">
                 <img src="assets/oreobaño.jpg" alt="Not Image Found" class="adopta rounded-circle">
                 <br>
                 <h2>Tendrás compañía hasta en el baño</h2>
@@ -69,19 +67,19 @@
 <br>
 
 <div class="container-fluid text-center">
-    <div class="d-flex justify-content-around d-flex justify-content-around">
-        <div class="col d-flex flex-column justfiy-content-center align-items-center">
-            <img src="assets/oreochistosa.jpg"  alt="Not Image Found" class="adopta rounded-circle border">
+    <div class="row d-flex justify-content-around">
+        <div class="col-12 col-md-4 d-flex flex-column justify-content-center align-items-center">
+            <img src="assets/oreochistosa.jpg" alt="Not Image Found" class="adopta rounded-circle border">
             <br>
             <h2>No te faltarán las risas</h2>
         </div>
-        <div class="col d-flex flex-column justfiy-content-center align-items-center">
-            <img src="assets/oreoferre.jpg"  alt="Not Image Found" class="adopta rounded-circle border">
+        <div class="col-12 col-md-4 d-flex flex-column justify-content-center align-items-center">
+            <img src="assets/oreoferre.jpg" alt="Not Image Found" class="adopta rounded-circle border">
             <br>
             <h2>Tendrás quien despache tu negocio</h2>
         </div>
-        <div class="col d-flex flex-column justfiy-content-center align-items-center">
-            <img src="assets/oreoasiento.jpg"  alt="Not Image Found" class="adopta rounded-circle border">
+        <div class="col-12 col-md-4 d-flex flex-column justify-content-center align-items-center">
+            <img src="assets/oreoasiento.jpg" alt="Not Image Found" class="adopta rounded-circle border">
             <br>
             <h2>Asiento disponible las 24 <br> horas</h2>
         </div>
@@ -97,9 +95,7 @@
             <div class="col-md-6 right-content">
                 <h2 class="mt-3 text-light tw-text-4xl tw-font-semibold">Conoce a Oreo</h2>
                 <h3 class="font-weight-normal text-light">Oreo es una bonita perrita Border Collie que fue adoptada de
-                    nuestro refugio, le GUSTA mucho
-                    jugar con su pelota, es inteligente, amorosa e inquieta.
-                </h3>
+                    nuestro refugio, le GUSTA mucho jugar con su pelota, es inteligente, amorosa e inquieta.</h3>
                 <br>
                 <h3 class="mb-3 font-weight-normal text-light">Conoce mas acerca de Oreo y su dueña para ver como los
                     animales pueden cambiar vidas.</h3>
@@ -107,17 +103,17 @@
         </div>
     </div>
 </div>
-<div class="container  text-center tw-flex tw-flex-col tw-items-center">
+
+<div class="container text-center tw-flex tw-flex-col tw-items-center">
     <img src="assets/money.png" alt="Adopta" class="tw-w-1/4 tw-mb-6">
     <h2 class="tw-text-3xl tw-font-bold tw-mb-4">¿No puedes adoptar?</h2>
     <p class="tw-text-lg tw-mb-6">¡Ayuda al refugio con una donación monetaria!</p>
-
     <button
         class="tw-bg-blue-500 tw-hover:bg-blue-600 text-white tw-font-medium tw-py-2 tw-px-6 tw-rounded-md tw-text-xl">¡Apoya
         al refugio!</button>
-        <br>
-        <br>
-        <br>
+    <br>
+    <br>
+    <br>
 </div>
 <br>
 <app-footer></app-footer>
