@@ -18,7 +18,7 @@ import { WebAPIService } from '../../serv/web/web-api.service';
 })
 export class QrDialogComponent implements OnInit{
   @Input() appoinmentId!: string;
-  baseURL: string = "http://localhost:3000/";
+  baseURL: string = "https://backend.diegomagdaleno.tech";
   qrCodeValue: string = "";
 
   constructor(
@@ -29,6 +29,7 @@ export class QrDialogComponent implements OnInit{
 
   ngOnInit(): void {
       this.web.get(`${this.baseURL}/appointments/qr/${this.data.appointmentId}`).subscribe((res: any) => {
+        console.log(res);
         this.qrCodeValue = res.qr;
       });
   }
