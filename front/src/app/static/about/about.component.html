@@ -1,5 +1,6 @@
 <app-navbar></app-navbar>
-<div class="container my-5">
+<app-boton-accesibilidad></app-boton-accesibilidad>
+<div class="container my-5" [ngClass]="{'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
     <div class="row">
         <div class="col-md-12 text-center mb-5 tw-flex tw-flex-col tw-items-center">
             <img src="assets/about.jpeg" alt="Logo" class="img-fluid w-25">

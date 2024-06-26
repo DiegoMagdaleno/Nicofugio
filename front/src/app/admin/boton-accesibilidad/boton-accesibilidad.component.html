@@ -1,0 +1,21 @@
+<div class="tw-fixed tw-bottom-4  tw-right-4 tw-flex tw-flex-col tw-items-end tw-space-y-2">
+    <ng-container *ngIf="isOpen">
+        <button class="tw-bg-blue-500 tw-text-white tw-p-4 tw-rounded-full tw-shadow-lg tw-transition tw-transform tw-hover:scale-110"(click)="toggleScreenReader()" [ngClass]="{'tw-bg-green-500': this.accesibilidad.getScreenReader()}  ">
+            Lector de pantalla
+        </button>
+        <button class="tw-bg-blue-500 tw-text-white tw-p-4 tw-rounded-full tw-shadow-lg tw-transition tw-transform tw-hover:scale-110"(click)="toggleLargeFont()">
+            Texto grande
+        </button>
+        <button class="tw-bg-blue-500 tw-text-white tw-p-4 tw-rounded-full tw-shadow-lg tw-transition tw-transform tw-hover:scale-110"(click)="toggleHighContrast()">
+            Alto contraste
+        </button>
+        <button class="tw-bg-blue-500 tw-text-white tw-p-4 tw-rounded-full tw-shadow-lg tw-transition tw-transform tw-hover:scale-110"(click)="toggleUnderLineLinks()">
+            Subrayar enlaces
+        </button>
+
+    </ng-container>
+    <button (click)="toggleButtons()"
+    class="tw-bg-red-500 tw-text-white tw-p-4 tw-rounded-full tw-shadow-lg tw-transition tw-transform tw-hover:scale-110">
+Accesiblidad
+</button>
+</div>

@@ -1,5 +1,6 @@
 <app-navbar></app-navbar>
-<div class="mt-4 p-5 tw-bg-blue-500 text-white tw-flex tw-flex-col tw-align-middle tw-justify-center tw-items-center">
+<app-boton-accesibilidad></app-boton-accesibilidad>
+<div class="mt-4 p-5 tw-bg-blue-500 text-white tw-flex tw-flex-col tw-align-middle tw-justify-center tw-items-center" [ngClass]="{'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
     <img src="assets/donate.png" alt="Donar" class="img-fluid tw-w-1/4">
     <div class="container text-center">
         <h1 class="display-4">Ayuda a los Animales en Necesidad</h1>
@@ -7,7 +8,7 @@
     </div>
 </div>
 
-<div class="container my-5">
+<div class="container my-5" [ngClass]="{ 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
     <h2 class="text-center mb-4">¿Por qué donar a Nicofugio?</h2>
     <p>Las donaciones a Nicofugio contribuyen a proporcionar cuidado, alimento y refugio a los animales sin hogar. Además, nos ayudan a seguir con nuestra misión de encontrar familias amorosas para cada mascota. Cada contribución, grande o pequeña, tiene un impacto positivo y directo en la vida de estos animales.</p>
     

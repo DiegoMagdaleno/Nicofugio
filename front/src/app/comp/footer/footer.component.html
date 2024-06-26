@@ -1,4 +1,4 @@
-<footer class="container-fluid tw-bg-blue-400 text-white py-5">
+<footer class="container-fluid tw-bg-blue-400 text-white py-5" [ngClass]="{ 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -17,13 +17,13 @@
                     <li><a href="#" class="text-white">Instagram</a></li>
                 </ul>
             </div>
-            <div class="col-md-4">
-                <h5>Suscribirse al boletín</h5>
-                <form class="tw-flex tw-space-x-4">
-                    <div class="form-group">
+            <div class="col-md-4" [ngClass]="{ 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
+                <h5 [ngClass]="{ 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">Suscribirse al boletín</h5>
+                <form class="tw-flex tw-space-x-4" [ngClass]="{ 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
+                    <div class="form-group" [ngClass]="{ 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
                         <input type="email" class="form-control" placeholder="Tu correo electrónico">
                     </div>
-                    <button type="submit" class="btn btn-primary">Suscribirse</button>
+                    <button type="submit" class="btn btn-primary" [ngClass]="{ 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">Suscribirse</button>
                 </form>
             </div>
         </div>

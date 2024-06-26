@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
-<div class="container tw-p-8 tw-mb-4 tw-flex tw-h-1/2 tw-justify-center tw-items-center">
-        <div class="left-content tw-flex tw-items-center tw-justify-center tw-flex-col">
+<app-boton-accesibilidad></app-boton-accesibilidad>
+<div class="container tw-p-8 tw-mb-4 tw-flex tw-h-1/2 tw-justify-center tw-items-center" [ngClass]="{'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
+        <div class="left-content tw-flex tw-items-center tw-justify-center tw-flex-col" [ngClass]="{'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
             <img src="assets/Logo.png" alt="Mascotas" class="img-fluid tw-w-1/4 tw-m-2">
             <h1 class="font-weight-bold tw-text-4xl tw-m-4">Encuentra tu <span
                     class="tw-text-blue-500 font-weight-bold">nuevo</span> mejor amigo.</h1>
@@ -16,8 +17,8 @@
             <img src="assets/MainImage.png" alt="Adopta">
         </div>
 </div>
-<div class="container-fluid tw-bg-blue-500">
-    <div class="container">
+<div class="container-fluid tw-bg-blue-500" [ngClass]="{'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
+    <div class="container" [ngClass]="{'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
         <div class="row">
             <div class="col text-center tw-flex tw-items-center tw-flex-col">
                 <img src="assets/glass.png" alt="Adopta" class="img-fluid tw-w-1/4">
