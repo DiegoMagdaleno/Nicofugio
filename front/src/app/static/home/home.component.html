@@ -17,11 +17,11 @@
     <div class="right-content tw-w-full lg:tw-w-1/2 tw-flex tw-justify-center lg:tw-justify-end tw-mt-4 lg:tw-mt-0">
         <img src="assets/MainImage.png" alt="Adopta" class="img-fluid tw-w-full lg:tw-w-auto">
     </div>
-</div>
+
 <div class="container-fluid tw-bg-blue-500" [ngClass]="{'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
     <div class="container" [ngClass]="{'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
         <div class="row">
-            <div class="col text-center tw-flex tw-items-center tw-flex-col">
+            <div class="col text-center tw-flex tw-items-center tw-flex-col" [ngClass]="{'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
                 <img src="assets/glass.png" alt="Adopta" class="img-fluid tw-w-1/4">
                 <h1 class="text-center mt-3 text-white tw-text-4xl">Acerca de Nicofugio</h1>
                 <h4 class="mt-3 font-weight-normal text-white">Nicofugio comenzo como un apoyo a los animales sin hogar.

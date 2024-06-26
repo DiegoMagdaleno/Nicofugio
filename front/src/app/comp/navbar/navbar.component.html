@@ -1,30 +1,30 @@
 
-<nav class="tw-shadow-md tw-sticky tw-top-0 tw-backdrop-blur-md tw-bg-white/75 tw-z-30" >
-    <div class="tw-container tw-mx-auto tw-flex tw-items-center tw-justify-between tw-py-4">
+<nav class="tw-shadow-md tw-sticky tw-top-0 tw-backdrop-blur-md tw-bg-white/75 tw-z-30" [ngClass]="{ 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
+    <div class="tw-container tw-mx-auto tw-flex tw-items-center tw-justify-between tw-py-4" [ngClass]="{'tw-underline': this.accesibilidad.getUnderlineLinks(), 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
         <a class="tw-flex tw-items-center" routerLink="/">
             <img src="assets/Logo.png" alt="Logo" class="tw-w-12 tw-h-12">
         </a>
         <button class="tw-block lg:tw-hidden tw-p-2 tw-border tw-rounded tw-border-gray-400" type="button"
             data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-            aria-expanded="false" aria-label="Toggle navigation">
+            aria-expanded="false" aria-label="Toggle navigation" [ngClass]="{'tw-underline': this.accesibilidad.getUnderlineLinks(), 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="tw-hidden lg:tw-flex tw-flex-grow tw-items-center tw-justify-center tw-space-x-8"
-            id="navbarNavAltMarkup">
-            <a class="tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600" routerLink="/about">Acerca
+            id="navbarNavAltMarkup" [ngClass]="{ 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
+            <a class="tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600" routerLink="/about" [ngClass]="{'tw-underline': this.accesibilidad.getUnderlineLinks(), 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">Acerca
                 de</a>
             <a class="tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600"
-                routerLink="/gallery">Adopta</a>
+                routerLink="/gallery" [ngClass]="{'tw-underline': this.accesibilidad.getUnderlineLinks(), 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">Adopta</a>
             <a class="tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600"
-                routerLink="/donations">Dona</a>
+                routerLink="/donations" [ngClass]="{'tw-underline': this.accesibilidad.getUnderlineLinks(), 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">Dona</a>
             <a class="tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600"
-                routerLink="/contact">Contacto</a>
+                routerLink="/contact" [ngClass]="{'tw-underline': this.accesibilidad.getUnderlineLinks(), 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">Contacto</a>
             <a class="tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600"
-                routerLink="/events">Eventos</a>
+                routerLink="/events" [ngClass]="{'tw-underline': this.accesibilidad.getUnderlineLinks(), 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">Eventos</a>
         </div>
         <div class="tw-hidden lg:tw-flex tw-items-center tw-space-x-4">
             <a *ngIf="!auth.currentUser" class="tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600"
-                routerLink="/login">Iniciar Sesion</a>
+                routerLink="/login " [ngClass]="{'tw-underline': this.accesibilidad.getUnderlineLinks(), 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">Iniciar Sesion</a>
             <div *ngIf="auth.currentUser" class="tw-relative">
                 <span class="tw-text-lg tw-font-semibold tw-text-gray-700 cursor-pointer" (click)="toggleDropdown()">{{
                     userDetails.displayName }}</span>
@@ -43,19 +43,19 @@
     <div class="lg:tw-hidden collapse" id="navbarNavAltMarkup">
         <div class="tw-py-2 tw-space-y-2">
             <a class="tw-block tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600"
-                routerLink="/about">Acerca de</a>
+                routerLink="/about" [ngClass]="{'tw-underline': this.accesibilidad.getUnderlineLinks(), 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">Acerca de</a>
             <a class="tw-block tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600"
-                routerLink="/gallery">Adopta</a>
+                routerLink="/gallery" [ngClass]="{'tw-underline': this.accesibilidad.getUnderlineLinks(), 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">Adopta</a>
             <a class="tw-block tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600"
-                routerLink="/donations">Dona</a>
+                routerLink="/donations" [ngClass]="{'tw-underline': this.accesibilidad.getUnderlineLinks(), 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">Dona</a>
             <a class="tw-block tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600"
-                routerLink="/contact">Contacto</a>
+                routerLink="/contact" [ngClass]="{'tw-underline': this.accesibilidad.getUnderlineLinks(), 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">Contacto</a>
             <a class="tw-block tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600"
-                routerLink="/events">Eventos</a>
+                routerLink="/events" [ngClass]="{'tw-underline': this.accesibilidad.getUnderlineLinks(), 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">Eventos</a>
             <a class="tw-block tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600"
-                routerLink="/signup">Sign Up</a>
+                routerLink="/signup" [ngClass]="{'tw-underline': this.accesibilidad.getUnderlineLinks(), 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">Sign Up</a>
             <a class="tw-block tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600"
-                routerLink="/login">Login</a>
+                routerLink="/login" [ngClass]="{'tw-underline': this.accesibilidad.getUnderlineLinks(), 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">Login</a>
         </div>
     </div>
 </nav>
