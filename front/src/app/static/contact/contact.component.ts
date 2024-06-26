@@ -14,7 +14,7 @@ import { WebAPIService } from '../../serv/web/web-api.service';
 export class ContactComponent implements OnInit {
   contactForm!: FormGroup;
 
-  baseURL = 'http://localhost:3000';
+  baseURL = ' http://104.248.21.0:3000';
 
   constructor(private web: WebAPIService) {}
 

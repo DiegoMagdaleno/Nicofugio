@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Appointment } from '../model/appointment';
 import { WebAPIService } from './web/web-api.service';
 
-const URL = 'http://localhost:3000';
+const URL = ' http://104.248.21.0:3000';
 
 @Injectable({
   providedIn: 'root',
