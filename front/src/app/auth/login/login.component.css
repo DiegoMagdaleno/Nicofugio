@@ -1,6 +1,0 @@
-.dog-pattern {
-  position: relative; /* Ensure the pseudo-element is positioned correctly */
-  background-image: url("/assets/pattern.png");
-  background-size: cover; /* Adjust as needed */
-  background-position: center;
-}/*# sourceMappingURL=login.component.css.map */
