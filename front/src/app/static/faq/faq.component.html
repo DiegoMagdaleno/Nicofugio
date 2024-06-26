@@ -1,0 +1,22 @@
+<!-- faq.component.html -->
+<app-navbar></app-navbar>
+<app-boton-accesibilidad></app-boton-accesibilidad>
+<div class="body" [ngClass]="{ 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
+    <div class="container faq-container">
+        <h1 class="tw-text-4xl tw-text-blue-500">Preguntas Frecuentes</h1>
+        <br>
+        <div class="row">
+            <div *ngFor="let faq of faqs; let i = index" [ngClass]="{'offset-md-6': i % 2 === 1}" class="col-md-6 mb-3 faq-container shadow rounded ">
+                <div class="card">
+                    <div class="card-header tw-text-xl tw-bg-blue-500 tw-text-white">
+                        {{ faq.question }}
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ faq.answer }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
