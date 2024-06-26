@@ -5,7 +5,7 @@ import { WebAPIService } from './web/web-api.service';
   providedIn: 'root',
 })
 export class StatsService {
-  baseURL = ' http://104.248.21.0:3000';
+  baseURL = ' https://backend.diegomagdaleno.tech';
 
   constructor(private web: WebAPIService) {}
 

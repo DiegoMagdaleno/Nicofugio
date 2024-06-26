@@ -53,7 +53,7 @@ export class AppointmentComponent {
   maxDate: Date = new Date(new Date().setMonth(new Date().getMonth() + 1));
   @Input() petId: number = 0;
 
-  baseURL = ' http://104.248.21.0:3000/';
+  baseURL = ' https://backend.diegomagdaleno.tech/';
 
   constructor(
     private formBuilder: FormBuilder,
