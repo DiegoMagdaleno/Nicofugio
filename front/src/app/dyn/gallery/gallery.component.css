@@ -1,0 +1,29 @@
+img {
+  width: 300px;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.ajuste {
+  margin: 25px;
+}
+
+.ajuste2 {
+  margin: 25px;
+  border: none;
+}
+
+.ajuste3 {
+  background-image: url("../../../assets/fondoanimales.jpg");
+}
+
+h5 {
+  font-size: large;
+  font-weight: bold;
+}
+
+.color {
+  background-color: #3b82f6;
+}/*# sourceMappingURL=gallery.component.css.map */

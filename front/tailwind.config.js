@@ -1,7 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  prefix: 'tw-',
-  important: true,
   content: [
     "./src/**/*.{html, ts}",
   ],
@@ -9,5 +7,6 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  prefix: 'tw-'
 }
 

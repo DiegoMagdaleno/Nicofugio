@@ -1,5 +1,6 @@
 <app-navbar></app-navbar>
-<div>
+<app-boton-accesibilidad></app-boton-accesibilidad>
+<div [ngClass]="{ 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
     <div class="container contact-form rounded shadow">
         <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
             <h1 class="tw-text-4xl tw-text-blue-500">¡Envíanos un Mensaje!</h1>
@@ -16,7 +17,7 @@
                             placeholder="Tu E-mail">
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-warning tw-w-full tw-bg-blue-500">
+                        <button type="submit" class="btn btn-warning tw-w-full tw-bg-blue-500" [ngClass]="{'tw-underline': this.accesibilidad.getUnderlineLinks(), 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
                             <span class="text-light">Enviar Mensaje</span>
                         </button>
                     </div>

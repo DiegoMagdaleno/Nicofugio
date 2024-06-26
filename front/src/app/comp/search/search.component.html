@@ -1,4 +1,4 @@
-<div class="tw-flex tw-items-center tw-justify-center">
+<div class="tw-flex tw-items-center tw-justify-center" [ngClass]="{'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
   <div class="tw-relative">
 
     <div class="tw-absolute tw-inset-y-0 tw-start-0 tw-flex tw-items-center tw-ps-3 tw-pointer-events-none">

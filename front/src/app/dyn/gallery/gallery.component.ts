@@ -12,6 +12,8 @@ import { FooterComponent } from '../../comp/footer/footer.component';
 import { Auth } from '@angular/fire/auth';
 import { MatDialog } from '@angular/material/dialog';
 import { GatekeeperDialogComponent } from '../../dialog/gatekeeper-dialog/gatekeeper-dialog.component';
+import { BotonAccesibilidadComponent } from '../../admin/boton-accesibilidad/boton-accesibilidad.component';
+import { AccesibilidadService } from '../../admin/boton-accesibilidad/accesibilidad.service';
 
 @Component({
   selector: 'app-gallery',
@@ -24,6 +26,7 @@ import { GatekeeperDialogComponent } from '../../dialog/gatekeeper-dialog/gateke
     SearchComponent,
     NavbarComponent,
     FooterComponent,
+    BotonAccesibilidadComponent
   ],
   templateUrl: './gallery.component.html',
   styleUrl: './gallery.component.scss',
@@ -43,7 +46,8 @@ export class GalleryComponent {
     private petsService: PetsService,
     private auth: Auth,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    public accesibilidad: AccesibilidadService
   ) {}
 
   ngOnInit(): void {

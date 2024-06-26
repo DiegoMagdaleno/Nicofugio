@@ -1,11 +1,12 @@
 <app-navbar></app-navbar>
-<div>
-      <div class=" tw-bg-blue-500 text-white tw-flex-col tw-flex tw-items-center">
-        <div class="row">
+<app-boton-accesibilidad></app-boton-accesibilidad>
+<div [ngClass]="{ 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
+      <div class=" tw-bg-blue-500 text-white tw-flex-col tw-flex tw-items-center" >
+        <div class="row" [ngClass]="{ 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
             <div class="col-md-12 text-center mb-5 tw-flex tw-flex-col tw-items-center mt-3 p-1">
-                <img src="assets/PerroFiesta.png" alt="Logo" class="img-fluid w-25">
-                <h1 class="display-4">¡Eventos proximos!</h1>
-                <p class="lead">¿No te interesa participar mas? Tendremos un monton de actividades, cursos y historias por contar sobre nosotros, ¡No te los pierdas son completamente gratis!</p>
+                <img src="assets/PerroFiesta.png" alt="Logo" class="img-fluid w-25" >
+                <h1 class="display-4" [ngClass]="{ 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">¡Eventos proximos!</h1>
+                <p class="lead" [ngClass]="{ 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">¿No te interesa participar mas? Tendremos un monton de actividades, cursos y historias por contar sobre nosotros, ¡No te los pierdas son completamente gratis!</p>
             </div>
         </div>
       </div>

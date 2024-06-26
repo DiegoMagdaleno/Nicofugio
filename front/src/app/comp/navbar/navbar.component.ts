@@ -6,11 +6,13 @@ import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { AppointmentsDialogComponent } from '../../dialog/appointments-dialog/appointments-dialog.component';
 import { AuthService } from '../../serv/auth/auth.service';
+import { BotonAccesibilidadComponent } from '../../admin/boton-accesibilidad/boton-accesibilidad.component';
+import { AccesibilidadService } from '../../admin/boton-accesibilidad/accesibilidad.service';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, BotonAccesibilidadComponent],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
@@ -21,6 +23,7 @@ export class NavbarComponent implements OnInit {
   isMobileMenuOpen: boolean = false;
 
   constructor(
+    public accesibilidad: AccesibilidadService,
     public auth: Auth,
     private router: Router,
     private dialog: MatDialog,

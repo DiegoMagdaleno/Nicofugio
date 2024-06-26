@@ -1,0 +1,61 @@
+.left-content {
+  float: left;
+  width: 50%;
+}
+
+.right-content {
+  float: right;
+  width: 50%;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+/* Imagen encima de otra */
+#wrapper {
+  position: relative;
+}
+
+#wrapper > div {
+  width: 200px;
+  height: 200px;
+}
+
+#div2 {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+}/*# sourceMappingURL=app.component.css.map */
+.tw-high-contrast {
+  color: black !important;
+  background-color: yellow !important;
+  border-color: black !important;
+}
+ 
+.tw-high-contrast .tw-text-white {
+  color: black !important;
+}
+ 
+.tw-high-contrast .tw-bg-blue-800 {
+  background-color: black !important;
+}
+ 
+.tw-high-contrast .tw-bg-blue-800.tw-button {
+  background-color: black !important;
+  color: white !important;
+}
+ 
+.tw-high-contrast input[type="email"] {
+  background-color: white !important;
+  color: black !important;
+}
+ 
+.tw-high-contrast button {
+  background-color: black !important;
+  color: white !important;
+}
+
+a {
+  text-decoration: none;
+}
