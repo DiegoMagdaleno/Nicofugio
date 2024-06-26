@@ -1,3 +1,3 @@
 <div mat-dialog-content>
-    <p>qr-dialog works!</p>
+    <qrcode [qrdata]="qrCodeValue" [width]="512" [errorCorrectionLevel]="'M'" [allowEmptyString]="true"></qrcode>
 </div>

@@ -36,7 +36,7 @@ export class AppointmentCardComponent implements OnInit {
 
   openQRCodeDialog(id: string) {
     this.dialog.open(QrDialogComponent, {
-      data: { id },
+      data: { appointmentId: id },
     });
   }
 }
