@@ -7,7 +7,7 @@
         <ng-container *ngIf="!isLoading">
             <div class="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-4">
                 <ng-container *ngFor="let appointment of appointments; trackBy: trackByIndex">
-                    <app-appointment-card [appointment]="appointment"></app-appointment-card>
+                    <app-appointment-card [appointment]="appointment" (appointmentDeleted)="handleAppointmentDeleted()"></app-appointment-card>
                 </ng-container>
             </div>
         </ng-container>

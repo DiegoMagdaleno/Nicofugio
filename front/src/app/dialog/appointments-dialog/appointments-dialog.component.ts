@@ -35,12 +35,21 @@ export class AppointmentsDialogComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.loadAppointments();
+  }
+
+  loadAppointments() {
+    this.isLoading = true;
     this.appointmentService
       .getAppointmentsForEmail(this.auth.currentUser!.email!)
       .subscribe((appointments) => {
         this.appointments = appointments;
         this.isLoading = false;
       });
+  }
+
+  handleAppointmentDeleted() {
+    this.loadAppointments();
   }
 
   trackByIndex(index: number, appointment: Appointment): number {
