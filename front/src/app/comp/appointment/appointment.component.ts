@@ -1,4 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl,
+  ValidationErrors,
+  AbstractControl,
+  AsyncValidatorFn,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { DatePipe } from '@angular/common';
+import { AppointmentsService } from '../../serv/appointments.service';
+import { Appointment } from '../../model/appointment';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Auth } from '@angular/fire/auth';
+import { EmailService } from '../../serv/email.service';
+import { of, Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import { MatFormField } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -6,29 +25,11 @@ import {
   MatNativeDateModule,
   provideNativeDateAdapter,
 } from '@angular/material/core';
-import {
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-  FormControl,
-  ValidationErrors,
-} from '@angular/forms';
-import { DatePipe } from '@angular/common';
-import { AppointmentsService } from '../../serv/appointments.service';
-import { Appointment } from '../../model/appointment';
-import {
-  MatNativeDateTimeModule,
-  MatTimepickerModule,
-} from '@dhutaryan/ngx-mat-timepicker';
-import { Router } from '@angular/router';
-import { NavbarComponent } from '../navbar/navbar.component';
-import { ToastrService } from 'ngx-toastr';
-import { Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { PetsService } from '../../serv/pets.service';
-import { Auth } from '@angular/fire/auth';
-import { EmailService } from '../../serv/email.service';
+import {
+  MatTimepickerModule,
+  MatNativeDateTimeModule,
+} from '@dhutaryan/ngx-mat-timepicker';
 
 @Component({
   selector: 'app-appointment',
@@ -44,9 +45,9 @@ import { EmailService } from '../../serv/email.service';
     MatButtonModule,
   ],
   templateUrl: './appointment.component.html',
-  styleUrl: './appointment.component.scss',
+  styleUrls: ['./appointment.component.scss'],
 })
-export class AppointmentComponent {
+export class AppointmentComponent implements OnInit {
   appointmentForm!: FormGroup;
   appointments: Appointment[] = [];
   minDate: Date = new Date();
@@ -69,13 +70,21 @@ export class AppointmentComponent {
     this.appointmentForm = this.formBuilder.group({
       date: ['', Validators.required],
       notes: '',
-      time: new FormControl({ value: '', disabled: true }, [
-        Validators.required,
-        this.canBeScheduled,
-      ]),
+      time: new FormControl(
+        { value: '', disabled: true },
+        {
+          validators: [Validators.required],
+          asyncValidators: [this.canBeScheduled()],
+          updateOn: 'blur',
+        }
+      ),
     });
 
     this.appointments = this.appointmentService.getAppointments();
+
+    this.appointmentForm.get('date')?.valueChanges.subscribe(() => {
+      this.onDateChange();
+    });
   }
 
   onSubmit(): void {
@@ -107,7 +116,6 @@ export class AppointmentComponent {
             this.appointmentForm.get(key)?.setErrors(null);
           });
           this.router.navigate(['/gallery']);
-
           this.toaster.success('Cita agendada con éxito', '¡Éxito!');
         });
       });
@@ -120,31 +128,46 @@ export class AppointmentComponent {
     return null;
   }
 
-  canBeScheduled = (formControl: FormControl): ValidationErrors | null => {
-    if (!formControl.value) return null;
-    const time = formControl.value;
-    const dateTime = new Date(time);
-    if (!dateTime) return null;
-    const hours = dateTime.getHours();
-    const minutes = dateTime.getMinutes();
-    const date = formControl.parent?.get('date')?.value;
-    if (!date) return null;
-    const dateString = this.datePipe.transform(date, 'dd/MM/yyyy');
-    if (!dateString) return null;
-    const appointments = this.appointmentService
-      .getAppointmentsForPet(this.petId)
-      .filter((a) => a.date === dateString);
-    if (!appointments.length) return null;
-    const timeD = new Date();
-    timeD.setMinutes(minutes);
-    timeD.setHours(hours);
-    const dateTimeString = this.datePipe.transform(timeD, 'HH:mm');
-    if (!dateTimeString) return null;
-    const appointment = appointments.find((a) => a.time === dateTimeString);
-    if (appointment) {
-      return { invalidTime: true };
-    }
-    return null;
+  canBeScheduled = (): AsyncValidatorFn => {
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
+      if (!control.value) return of(null);
+
+      const time = control.value;
+      const dateTime = new Date(time);
+      if (!dateTime) return of(null);
+
+      const hours = dateTime.getHours();
+      const minutes = dateTime.getMinutes();
+      const date = control.parent?.get('date')?.value;
+      if (!date) return of(null);
+
+      const dateString = this.datePipe.transform(date, 'dd/MM/yyyy');
+      if (!dateString) return of(null);
+
+      return this.appointmentService.getAllAppointments().pipe(
+        map((appointments: Appointment[]) => {
+          const collectedAppointments = appointments.filter(
+            (a) => a.petId === this.petId && a.date === dateString
+          );
+
+          if (!collectedAppointments.length) return null;
+
+          const timeD = new Date();
+          timeD.setMinutes(minutes);
+          timeD.setHours(hours);
+          const dateTimeString = this.datePipe.transform(timeD, 'HH:mm');
+          if (!dateTimeString) return null;
+
+          const appointment = collectedAppointments.find(
+            (a) => a.time === dateTimeString
+          );
+          if (appointment) {
+            return { invalidTime: true };
+          }
+          return null;
+        })
+      );
+    };
   };
 
   onDateChange() {

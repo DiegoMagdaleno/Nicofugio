@@ -33,7 +33,6 @@ export class AccesibilidadService {
     return this.highContrast;
   }
   getUnderlineLinks(){
-    console.log(this.underLineLinks);
     return this.underLineLinks;
   }
 }
