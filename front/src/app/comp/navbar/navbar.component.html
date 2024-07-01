@@ -6,8 +6,8 @@
             <img src="assets/Logo.png" alt="Logo" class="tw-w-12 tw-h-12">
         </a>
         <button class="tw-block lg:tw-hidden tw-p-2 tw-border tw-rounded tw-border-gray-400" type="button"
-            data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-            aria-expanded="false" aria-label="Toggle navigation"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"
+            (click)="toggleMobileMenu()"
             [ngClass]="{'tw-underline': this.accesibilidad.getUnderlineLinks(), 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">
             <i class="fas fa-bars"></i>
         </button>
@@ -54,7 +54,7 @@
             </div>
         </div>
     </div>
-    <div class="lg:tw-hidden collapse" id="navbarNavAltMarkup">
+    <div class="lg:tw-hidden" [ngClass]="{'tw-hidden': !isMobileMenuOpen}" id="navbarNavAltMarkup">
         <div class="tw-py-2 tw-space-y-2">
             <a class="tw-block tw-text-lg tw-font-semibold tw-text-gray-700 hover:tw-text-blue-600" routerLink="/about"
                 [ngClass]="{'tw-underline': this.accesibilidad.getUnderlineLinks(), 'tw-high-contrast': this.accesibilidad.getHighContrast(), 'tw-text-2xl': this.accesibilidad.getLargeFont()}">

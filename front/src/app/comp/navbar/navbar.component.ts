@@ -36,7 +36,6 @@ export class NavbarComponent implements OnInit {
         this.userDetails.displayName = user.displayName || 'User';
         this.isAdmin = await this.authService.checkUserIsAdmin(user.uid);
       }
-      console.log(await this.authService.checkUserIsAdmin(user!.uid));
     });
   }
 
